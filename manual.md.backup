@@ -1,5 +1,13 @@
 # SRW Engine MV User Manual V2.0
 
+**NOTE: As of engine version v3.0 it is no longer possible to edit Pilot, Mech and Weapon properties using meta data tags, please see below for info on how to migrate an older version project and how to access the new editor.**
+
+# Migrating a project from before v3.0
+
+If you have a project from before v3.0, where custom editors for Pilots, Mechs and Weapons were introduced, please run the game once and opt-in to the automatic upgrade process. All your definitions will be upgraded to the latest format.
+
+Then download the latest default assets bundle and extract it into the projects' root directory.
+
 # Set-up
 
 Extract the archive containing the sample project.<br>
@@ -12,7 +20,6 @@ To deploy a release build of a SRW Engine MV game take the following steps:
 * In RPG Maker select File > Deployment
 	- **DO NOT** Exclude unused files
 	- **DO NOT** enable encryption	
-
 
 # Terrain
 
@@ -180,6 +187,7 @@ Launch the game and on the title screen hit F11 to access the built-in editor.
 * Accuracy: Determines how likely the mech is to hit enemies.<br>
 * Terrain: Air,Land,Sea,Space. Determines the mech's performance on these terrains.<br>
 * Move: Determines how many tiles the mech can move by default.<br>
+
 * Size: Determines the size of the mech, which influences evasion and damage taken.<br>
 * CanFly
 * AirEnabled
@@ -366,7 +374,7 @@ A combination attack has the following properties:
 
 ## MAP Attacks
 
-Map attacks can be managed through the Weapon editor.
+Map attacks can be managed through the Weapon editor by selecting a map attack and clicking the Edit button in the Map Attack section.
 
 
 # Spirit Commands
@@ -2015,6 +2023,7 @@ $SRWConfig.battleSongs = {
 		3: "Battle1"
 	},
 	enemySongMapping: {// maps an enemy id to a song. A song is defined by the name of a .ogg file in the audio/bgm folder
+
 		5: "SRW_Boss1"
 	},
 	actorSongPriority: {//sets the priority of an actor's song over other songs, 1 if not listed
