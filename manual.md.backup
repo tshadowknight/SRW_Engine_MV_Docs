@@ -12,23 +12,7 @@ To deploy a release build of a SRW Engine MV game take the following steps:
 * In RPG Maker select File > Deployment
 	- **DO NOT** Exclude unused files
 	- **DO NOT** enable encryption	
-* In the output folder open package.json and replace is with the following:
-  
-```
-	{
-	    "name": "",
-	    "main": "www/index.html",
-	    "js-flags": "--expose-gc",
-	    "window": {
-	        "title": "",
-	        "toolbar": false,
-	        "width": 816,
-	        "height": 624,
-	        "icon": "www/icon/icon.png"
-	    },
-		"chromium-args": "--limit-fps=60"
-	}
-```
+
 
 # Terrain
 
@@ -97,102 +81,51 @@ When making pilots it is important to remember that enemy and ally pilots should
 If you have a character that appears as both throughout your game you must give them an entry as both an Ally and Enemy pilot.
 
 ## Ally Pilots
-Ally Pilots are Actors in vanilla RPG Maker terms. Of the default RPG Maker properties only the Name, Face image and Class are used, with the class being the starting Mech for that particular pilot.<br>
 
-The rest of the pilot properties are set using metadata tags in the note field. It is recommended to create a new character by copying an existing, fully defined, character and changing the properties as needed. The following is an annotated example:
+Launch the game and on the title screen hit F11 to access the built-in editor.
 
 #### Base stats
-\<pilotSpecies:human\> Currently unused<br>
 
-\<pilotBaseSP:45\> SP is used to cast Spirit Commands.<br>
-\<pilotBaseMelee:120\> Determines damage for Melee attacks.<br>
-\<pilotBaseRanged:165\> Determines damage for Ranged attacks.<br>
-\<pilotBaseSkill:110\> Determines how often the until will perform a critical hit and how often a unit will take a critical hit.<br>
-\<pilotBaseDefense:150\> Determines how much damage a unit takes.<br>
-\<pilotBaseEvade: 90\> Determines how likely enemy attacks are to hit.<br>
-\<pilotBaseHit:220\> Determines the unit's hit rate when attacking targets.<br>
-\<pilotTerrain:AABA\> Air, Sea, Land, Space. Determines the pilot's performance on these terrains.<br>
-\<pilotExpYield:50\>The exp yield listed here is the exp gained if the enemy defeated and the actor were at the same level. When the level is different the exp gain gets scaled accordingly.<br>
-\<pilotPPYield:10\><br>
-
-\<pilotGrantsGainsTo:1\> If specified all exp, kills and PP gained by this pilot will be added to the pilot with the specified id instead.<br>
-\<pilotSubTwinOnly:1> If specified the unit can only be the sub twin in a paired unit. If two units with this property are paired together this restriction is lifted.<br>
-\<pilotMainTwinOnly:1\> If specified the unit can only be the main twin in a paired unit. If two units with this property are paired together this restriction is lifted.
-
-\<pilotTags: newtype,leader\> Freeform tags applied to the pilot separated by commas. Can be used for battle text or for applying abilities.<br>
+* SP: is used to cast Spirit Commands.<br>
+* Melee: Determines damage for Melee attacks.<br>
+* Ranged: Determines damage for Ranged attacks.<br>
+* Skill: Determines how often the until will perform a critical hit and how often a unit will take a critical hit.<br>
+* Defense: Determines how much damage a unit takes.<br>
+* Evade: Determines how likely enemy attacks are to hit.<br>
+* Hit: Determines the unit's hit rate when attacking targets.<br>
+* Terrain: Air, Sea, Land, Space. Determines the pilot's performance on these terrains.<br>
+* Exp. yield: The exp yield listed here is the exp gained if the enemy defeated and the actor were at the same level. When the level is different the exp gain gets scaled accordingly.<br>
+* PP yield: The amount of Pilot Points awarded for shooting down this unit.<br>
+*  Tags:  Freeform tags applied to the pilot separated by commas. Can be used for battle text or for applying abilities.<br>
 
 
 #### Stat growth rates
 
 
 
-\<pilotSPGrowth:2\> A flat rate stat growth, at any given level the stat is calculated as: base\_stat + floor(level * growth\_rate) <br>
-\<pilotMeleeGrowth:300,0.8\> A curve stat growth. The first parameter defines the stat's value at level 99 and the second parameter defines the growth rate. Growth rate is a value between -1 and 1, where -1 is fast growth and 
+* A flat rate stat growth, at any given level the stat is calculated as: base\_stat + floor(level * growth\_rate) <br>
+* A curve stat growth. The first parameter defines the stat's value at level 99 and the second parameter defines the growth rate. Growth rate is a value between -1 and 1, where -1 is fast growth and 
 1 slow growth. <br>
-\<pilotRangedGrowth:1.2\><br>
-\<pilotSkillGrowth:0.9\><br>
-\<pilotDefenseGrowth:1.4\><br>
-\<pilotEvadeGrowth: 0.8\><br>
-\<pilotHitGrowth:1.2\><br>
+
 
 #### Spirits
 
 A pilot can have up to 6 spirits.<br>
-The format is: spirit\_id, level\_learned, cost
 
-\<pilotSpirit1: 25,1,10\><br>
-\<pilotSpirit2: 22,1,25\><br>
-\<pilotSpirit3: 27,10,15\><br>
-\<pilotSpirit4: 24,15,35\><br>
-\<pilotSpirit5: 6,20,35\><br>
-\<pilotSpirit6: 30,25,50\><br>
 
 #### Abilities
 
-Up to 200 entries can be listed.<br>
-The format is: ability\_id, ability\_level, level\_learned<br>
-The list can contain the same ability\_id twice but with a different ability level and learned level, this allows ability levels to go up as the character levels up.
-
-
-\<pilotAbility1: 4,2,1\><br>
-\<pilotAbility2: 31,1,1\><br>
-\<pilotAbility3: 12,1,1\><br>
-
-\<pilotAbility4: 4,3,5\><br>
-\<pilotAbility5: 4,4,10\><br>
-\<pilotAbility6: 4,5,15\><br>
-\<pilotAbility7: 4,6,20\><br>
-
-
-\<pilotAbilityAce: 36\>The ace ability for the pilot is a separate entry and only takes the ability\_id as a parameter.<br>
+The ability learn list defines which abilities a pilot learns and at which level.
 
 #### Personality
 
-A pilot's personality determines how their Will changes when certain events occur. The Will change for each type of event can be specified:
-
-\<pilotOnHitWill:1\> Applies when a pilot hits its target.<br>
-\<pilotOnMissWill:-1\> Applies when a pilot misses its target.<br>
-\<pilotOnDamageWill:2\> Applies when a pilot takes damage.<br>
-\<pilotOnEvadeWill:3\> Applies when a pilot avoids an attack.<br>
-\<pilotOnDestroyWill:3\> Applies when a pilot destroys a target.<br>
+A pilot's personality determines how their Will changes when certain events occur. 
 
 
 #### Relationships
 
-Pilots can have certain relationships towards other pilots, these relationships will grant bonuses to the pilot when adjacent to those other pilots.
+Pilots can have certain relationships towards other pilots, these relationships will grant bonuses to the pilot when adjacent to those other pilots. The other pilots listed are the recipients of the bonuses, the unit itself does not receive any bonuses.
 
-A pilot can have up to 50 relationships:   
-  
-\<pilotRelationship1: 3,0,2\><br>
-...<br>
-\<pilotRelationship50: 2,1,1\><br>
-
-The format is \<Other pilot id\>,\<Relationship definition\>,\<level\><br>
-\<pilotRelationship1: 3,0,2\>: The pilot will grant the effects of relationship bonus type 0 at level 2 to Pilot 3 when adjacent.
-
-**Note that level starts at 0!**
-
-Note that only one bonus type can be assigned per other pilot at a time, if you enter multiple lines for the same pilot only the last entry will apply. If you wish to combine bonuses you need to make a combined bonus effect instead.
 
 The effects of the relationship types are defined in RelationshipBonuses.conf.js
 
@@ -218,13 +151,8 @@ this.addDefinition(
 The setPilotRelationship plugin command can be used to update a pilot's relationships. 
 
 ## Enemy Pilots
-Enemy Pilots are Enemies in vanilla RPG Maker terms. Of the default RPG Maker properties only the Name is used.<br>
-The rest of the pilot properties are set using metadata tags in the note field. It is recommended to create a new character by copying an existing, fully defined, character and changing the properties as needed.<br>
 
-The metadata properties for enemies are mostly the same as for allies, so please refer to the previous section for more info. Enemy pilots have two additional properties:
-
-\<faceName:Monster\>The name of the Face image file in the img/faces folder <br>
-\<faceIndex:1\> The index of the Face that should be used, starting from at 1 for the top left most face and 8 for the bottom right most face
+Launch the game and on the title screen hit F11 to access the built-in editor. The properties are the same as for Ally Pilots.
 
 # Mechs
 
@@ -239,31 +167,29 @@ When working with Mechs a couple of important things must be kept in mind:
 
 ## Definition
 
-Mech are Classes in vanilla RPG Maker Terms. Of the default RPG Maker properties only the Name is used.<br>
-The rest of the Mech properties are set using metadata tags in the note field. It is recommended to create a new Mech by copying an existing, fully defined, one and changing the properties as needed. The following is an annotated example:<br>
+Launch the game and on the title screen hit F11 to access the built-in editor.
 
 ### Base stats
 
-\<mechAttribute1:vaccine\>The primary attribute of the mech, used if ENABLE\_ATTRIBUTE\_SYSTEM is on.<br>
-\<mechAttribute2:fire\>The secondary attribute of the mech, used if ENABLE\_ATTRIBUTE\_SYSTEM is on.<br>
-
-\<mechHP:6500\><br>
-\<mechEN:330\> EN is consumed to perform some attacks.<br>
-\<mechArmor:1650\> Determines how much damage the mech takes from enemy attacks.<br>
-\<mechMobility: 80\> Determines how likely the mech is to be hit by enemy attacks.<br>
-\<mechAccuracy:140\> Determines how likely the mech is to hit enemies.<br>
-\<mechTerrain:BABA\> Air,Land,Sea,Space. Determines the mech's performance on these terrains.<br>
-\<mechMove:4\> Determines how many tiles the mech can move by default.<br>
-\<mechSize:M> S/M/1L/2L Determines the size of the mech, which influences evasion and damage taken.<br>
-\<mechCanFly:0\> 0 for unable to fly, 1 for able to fly.<br>
-\<mechAirEnabled:0\> 0 for unable to fly, 1 for able to fly.<br> 
-\<mechLandEnabled:0\> 0 for unable to stand on land tile, 1 for able.<br>
-\<mechWaterEnabled:2\> 0 for unable to stand on water tile, 1 for able, 2 for able and no move penalty in water.<br>
-\<mechSpaceEnabled:1\> 0 for unable to stand on space tile, 1 for able.<br>
-\<mechExpYield:150\>The exp yield listed here is the exp gained if the enemy defeated and the actor were at the same level. When the level is different the exp gain gets scaled accordingly.<br>
-\<mechPPYield: 15\><br>
-\<mechFundYield: 500\><br>
-\<mechTags: real,gundam\> Freeform tags applied to the mech separated by commas. Can be used for battle text or for applying abilities.<br>
+* Primary Attribute: The primary attribute of the mech, used if ENABLE\_ATTRIBUTE\_SYSTEM is on.<br>
+* Secondary Attribute: The secondary attribute of the mech, used if ENABLE\_ATTRIBUTE\_SYSTEM is on.<br>
+* HP<br>
+* EN: EN is consumed to perform some attacks.<br>
+* Armor: Determines how much damage the mech takes from enemy attacks.<br>
+* Mobility: Determines how likely the mech is to be hit by enemy attacks.<br>
+* Accuracy: Determines how likely the mech is to hit enemies.<br>
+* Terrain: Air,Land,Sea,Space. Determines the mech's performance on these terrains.<br>
+* Move: Determines how many tiles the mech can move by default.<br>
+* Size: Determines the size of the mech, which influences evasion and damage taken.<br>
+* CanFly
+* AirEnabled
+* LandEnabled
+* WaterEnabled: By default a unit will still only have half movement in water. Set it to "without penalty" option to give the units full movement in water.
+* SpaceEnabled
+* ExpYield: The exp yield listed here is the exp gained if the enemy defeated and the actor were at the same level. When the level is different the exp gain gets scaled accordingly.<br>
+* PPYield<br>
+* FundYield<br>
+* Tags: Freeform tags applied to the mech separated by commas. Can be used for battle text or for applying abilities.<br>
 
 ### Upgrade costs
 
@@ -271,30 +197,17 @@ The upgrade costs for a mech's stats can be one of multiple types. The type defi
 
 Cost types are defined in Engine.conf. Types are separate between regular stats and weapon upgrades.
 
-
-\<mechUpgradeWeaponCost: 0\><br>
-\<mechUpgradeHPCost: 0\><br>
-\<mechUpgradeENCost: 1\><br>
-\<mechUpgradeArmorCost: 0\><br>
-\<mechUpgradeMobilityCost: 0\><br>
-\<mechUpgradeAccuracyCost: 1\><br>
-
 ### Upgrade amounts
 
-For normal stats, upgrades will increase the stat by a fixed value for each level of upgrades. This amount can be defined with the following settings:
+For normal stats, upgrades will increase the stat by a fixed value for each level of upgrades. The defaults are:
 
-\<mechUpgradeHPAmount: 350\><br>
-\<mechUpgradeENAmount: 10\><br>
-\<mechUpgradeArmorAmount: 60\><br>
-\<mechUpgradeMobilityAmount: 5\><br>
-\<mechUpgradAccuracyAmount: 6\><br>
-
-The values listed above are the default values used when the tags are not present in the mech metadata.
+HP: 350<br>
+EN: 10<br>
+Armor: 60<br>
+Mobility: 5<br>
+Accuracy: 6<br>
 
 For weapons the upgrade amount per level is defined in the Weapon definition.
-
-
-
 
 
 ### Transform
@@ -303,78 +216,38 @@ Note: Transformation functionality is currently only available for Ally units.
 
 Units can be given the ability to transform into other units.
 
-\<mechTransformsInto:\[1,2\]\>: The ids of the mechs into which the mech can transform.<br>
-\<mechTransformWill:\[0,100\]\>: The required will for transformation for each index.<br>
-\<mechTransformRestores:0\> If 1 the mech will recover all HP and EN after transforming. If 0 the old HP and EN will carry over.<br>
-\<mechTransformRestores:1,0\> Optionally this parameter can be defined as two comma separated values. The first value determines if HP will be restored, the second value determines if EN will be restored. In this example only HP will be restored after transforming.<br>
-
-
 Units can be given the ability to automatically transform into other units when they are destroyed.
 
-\<mechDestroyTransformInto:2\>: The id of the mech into which the mech will transform.<br>
-\<mechDestroyTransformedActor:2\>: If specified the unit's pilot will be set to the actor with the specified id after transforming.
 
 Units can be given the ability to automatically transform into other units if another unit is present or missing on the map.  
 
-
-\<mechTransformsWhenTargetPresent: 1, 23\> The first parameter is the id of the mech that should be present on the stage, the second id is the id of the mech into which this mech will transform if the condition is met.<br>
-**This property should not be used on Battle Ship units!**<br>
-
-\<mechTransformsWhenTargetMissing: 1, 22\> The first parameter is the id of the mech that should be missing on the stage, the second id is the id of the mech into which this mech will transform if the condition is met.<br>
 **This property should not be used on Battle Ship units!**<br>
 
 ### Combining Units
 
 Units can be given the ability to combine into other units. Combined units have the ability to split back into their components. The combine command will be available in the unit menu if all required units are adjacent on the map.
 
-#### Mechs that combine
 
-\<mechCombinesTo:5\>: The id off the mech into which the unit can combine.
+### Inheriting upgrades and parts
 
-#### Combined mechs
+When working with transforming or combining mechs it usually desirable for the upgrade levels of the transformed or combined mech to match those of the base mech and for parts to be synchronized as well.
 
-\<mechCombinesFrom:\[1,3\]\>: The ids of the mechs that are needed to combine into this unit. <br>
-\<mechCombinedActor:1\>: The id of the main pilot for the combined mech.
+Set the Sync With of a unit to sync its upgrades with another unit.
 
-
-### Inheriting upgrades
-
-When working with transforming or combining mechs it usually desirable for the upgrade levels of the transformed or combined mech to match those of the base mech.
-
-\<mechInheritsUpgradesFrom:1\>: The id of the mech from which the mech will inherit upgrade levels.
-
-
-
-
-
-### Inheriting parts
-
-When working with transforming mechs it may be desired that the mech that is transformed into automatically gets the same parts as the mech that started the transformation. 
-
-\<mechInheritsPartsFrom:1\>: The id of the mech from which the mech will inherit parts. If specified the parts of the mech can not be changed in the equip menu.
 
 ### Managing (Sub)Pilot Assignments 
 
-Some mechs may be pilot-able by multiple pilots:
+Only applies to allied units.
 
-\<mechAllowedPilots:1,2,5\>: Lists the ids of the pilot that can pilot this mech.
+Some mechs may be pilot-able by multiple pilots. Set the Allowed Pilots to defined which pilots these are.
 
 A mech can have any number of sub-pilots. The spirit commands of the sub-pilots are usable by the unit as a whole.
 The pilots listed in the database definition are the default sub-pilots for a unit.
 
-\<mechSubPilots:\[3,5\]\>: The ids of the sub-pilots. If a slot should be empty by default the value should be 0.
-
 Each sub pilot slot can be assigned a list of valid pilots. Up to 10 slots are supported:
 
-\<mechAllowedSubPilots1:6,7\><br>
-\<mechAllowedSubPilots2:6,7\><br>
-...<br>
-\<mechAllowedSubPilots10:6,7\><br>
 
-\<mechAllowedSubPilots1\> defines the valid pilots for the first entry of \<mechSubPilots\>, \<mechAllowedSubPilots2\> for the second entry, etc.
-
-
-\<mechFixedSubPilots:1\>: If set to 1 the sub-pilots of the mech will always be set to the ones defined by the \<mechSubPilots\> tag. This property should be set on mechs that have sub-pilots that can be assigned to different units so that it will always have the correct sub-pilots when deployed.
+Fore Pilots: If enabled the sub-pilots of the mech will always be set to the ones defined by the sub pilots tag. This property should be set on mechs that have sub-pilots that can be assigned to different units so that it will always have the correct sub-pilots when deployed.
 
 ### Deployment
 
@@ -382,267 +255,118 @@ Each sub pilot slot can be assigned a list of valid pilots. Up to 10 slots are s
 
 Some mechs need to make sure pilots are in the correct spot before they can be used.
 
-The \<mechDeployActions\> tag allows an id to be configured that refers to an entry in the DeployActions.conf.js file. The definitions in this file will be further explained with some examples.
-
-##### First example
-A Unit that functions like RyuKoOh from Super Robot Wars OG.
-
-In this example RyoKoOh is unit id 14 and KoRyuOh is unit id 15. Kusuha is pilot id 13 and Bullet is pilot id 12.
-
-\<mechDeployActions: 0\> refers to the first definition in DeployActions.conf.js.
-
-In the file itself the definition looks as follows:
-
-```  
- DEPLOY_ACTIONS[0] = {
-	13: {//pilot 13
-		14: [ //unit 14
-			{target: {type: "sub", slot: 0}, source: {type: "direct", id: 12}}, //assign pilot 12 to sub slot 0 of unit 14
-			{target: {type: "main"}, source: {type: "direct", id: 13}} //assign pilot 13 to the main pilot slot of unit 14
-		],
-		15: [ //unit 15
-			{target: {type: "main"}, source: {type: "direct", id: 12}} //assign pilot 12 to the main pilot slot of unit 15
-		]
-	},
-	12: { // this definition is used when transforming into RyoKoOh on the map, as pilot 12(Bullet) is still the main pilot at the time of transformation
-		14: [ //unit 14
-			{target: {type: "sub", slot: 0}, source: {type: "direct", id: 12}}, //assign pilot 12 to sub slot 0 of unit 14
-			{target: {type: "main"}, source: {type: "direct", id: 13}} //assign pilot 13 to the main pilot slot of unit 14
-		],
-	}
-}; 
-  ```
-
-This definition describes what changes to pilot assignment should occur when a specific pilot becomes the main pilot of the unit this definition is assigned to. These actions are also applied when a unit is deployed, either directly or when it is transformed into, combined into or split into.
-
-These are the rules defined by the example above:
-
-* when pilot 13(Kusuha) is set as its main the following pilot changes should happen:
-	* Set pilot 13(Kusuha) as the main of unit 14(RyuKoOh)
-	* Set pilot 12(Bullet) as the sub-pilot of unit 14(RyuKoOh)
-	* Set pilot 12(Bullet) as the main of unit 15(KoRyuOh) (For display in the unit list during the intermission)
-		
-* when pilot 12(Bullet) is set as its main the following pilot changes should happen:
-	* Set pilot 13(Kusuha) as the main of unit 14(RyuKoOh)
-	* Set pilot 12(Bullet) as the sub-pilot of unit 14(RyuKoOh)
-
-The definition with Bullet as the main is there to make transforming into RyuKoOh function properly. When the transformation is triggered Bullet temporarily becomes the main Pilot of RyuKoOh but is then replaced by Kusuha by the Deploy Action.
-
-
-
-##### Second Example
-
-This example creates a unit that functions like the Grungust Type 3 from Super Robot Wars OG. This unit can have variable main and sub pilots and combine/split.
-
-```
-/*
-	Type 3 (unit 16)
-*/
-
-DEPLOY_ACTIONS[2] = {
-	"-1": { //any pilot
-		16: [ 
-			{target: {type: "main"}, source: {type: "main", mech_id: 17}}, // assign the main pilot of unit 17(Bird) as main pilot of unit 16(Type 3)
-			{target: {type: "sub", slot: 0}, source: {type: "main", mech_id: 18}} // assign the main pilot of unit 18(Lander) as sub pilot of unit 16(Type 3)
-		]		
-	}
-};
-
-/*
-	Type 3 - Bird(unit 17)
-*/
-
-DEPLOY_ACTIONS[3] = {
-	"-1": { //any pilot
-		17: [
-			{target: {type: "main"}, source: {type: "main", mech_id: 16}}, // assign the main pilot of unit 16(Type 3) as main pilot of unit 17(Bird)
-		]		
-	}
-};
-
-/*
-	Type 3 - Lander(unit 18)
-*/
-
-DEPLOY_ACTIONS[4] = {
-	"-1": { //any pilot
-		18: [
-			{target: {type: "main"}, source: {type: "sub", slot: 0, mech_id: 16}}, // assign the sub pilot of unit 16(Type 3) as main pilot of unit 18(Lander)
-		]		
-	}
-};
-```
-
-This example shows the use of -1 as a pilot id. -1 signifies that the Action will be used for any pilot, unless there is a specific definition for the pilot in question.
-
-This example also uses indirect sources, identified by the type being either "main" or "sub". For these types a mech\_id is specified and for sub pilots a slot as well. The source in this case will be whatever pilot currently exists in the specified spot. In the definition for the Type 3 the Action will take the main pilot of mech 17(Type 3 - Bird) and put them in the main pilot spot of the Type 3 itself. The second action will take the sub-pilot of mech 18(Type 3 - Lander) and put them in the sub-pilot slot of the Type 3. This is used when combining the Bird and Lander into the Type 3.
-
-The definitions for the Bird and Lander take a slot from the combined Type 3 and puts them into the respective main pilot seat. This is used when splitting the Type 3 into the Bird and Lander.
-
-##### Checking if a unit can be deployed
-
-
-
-
-
-
-
-
-In addition to being used to rearrange pilots as needed the Deploy Action definitions are also used to check whether a unit is valid to deploy. For sources that are of the "direct" type a check is performed to see if the specified pilot is in the right place. For sources that are indirect("main" or "sub" type), a check is performed to see if any pilot is available in the target slot for that entry.
-
-##### Automatically rearranging pilots
-
-If the \<mechForcePilots\> tag is set to 1 the mech will force pilots to be reassigned when assigning main pilots to them in the pilot swap window. The pilots assigned are in accordance with the defined Deploy Actions.
-
-#### Undeployable mechs
-Some mechs can not be deployed directly, these are usually mechs that other mechs transform into:
-
-\<mechNotDeployable:1\>
-
-#### Mechs that can't twin
-
-\<mechNoTwin: 1\> If specified the mech cannot be twinned with another unit.
-
+Set deploy actions to manage automatic pilot reassignments.
 
 ### Attacks
 
-The attacks available to the mech, identified by a Weapon ID. Optional a second parameter can be provided, if set to 1 the attack will be locked for the mech until it is unlocked using the unlockMechWeapon plugin command.<br>
-
-\<mechAttack0:1\><br>
-\<mechAttack1:2\><br>
-\<mechAttack1:2,1\><br> 
+The attacks available to the mech. If locked the weapon will not show up in the weapon list be default.
 
 ### Abilities
 
+A Mech can have up to 6 abilities and Full Upgrade Bonus ability.
 
-A Mech can have up to 6 abilities, identified by a Mech Ability ID.
-
-\<mechAbility1:4\><br>
-
-\<mechFullUpgradeAbility:20\> The Full Upgrade Ability is assigned separately.<br>
 
 ### Items
 
-\<mechItemSlots:2\><br>
+A mech can have 1-4 item slots. An enemy mech will drop all items it is holding for the player to collect when defeated. The items held by enemies are defined when spawning the enemy.
 
 ### Sprite info 
 
-\<srpgOverworld:Mech1,0\>The map sprite for the Mech: the name of the image in the img/characters folder and the index in the image. The index starts at 0 for the top left most sprite set and ends at 7 for the bottom right most set.<br>
-\<mechBasicBattleSprite:harold\> The name of the image in the img/basic_battle folder.<br>
-
 Image files for the battle scene are stored in the img/SRWBattleScene directory with a sub directory for each character. The directory for each character contains a main.png image which is the image that is used for the Mech in the battle scene.
 
-\<mechBattleSceneSprite:harold\> The name of the sub directory in the img/SRWBattleScene folder that houses the image files for the Mech. <br>
-\<mechBattleSceneSpriteSize:64\> The height and width of the main.png image for this mech.<br>
-\<mechMenuSprite:harold\>  The name of a .png file in the img/menu folder. This image is displayed in the menus when the full size mech sprite is shown. If omitted the main.png sprite of the unit will be used instead.<br>
-\<mechBattleSceneUseSpriter:1\> If 1 the sprite for this mech is a Spriter sprite. More info about Spriter sprites in the chapter on the battle animation system. <br>
-\<mechBattleSceneShadowSize:1\> The size of the shadow displayed for the mech in the battle scene.<br>
-\<mechBattleSceneShadowOffsetX:0\>The x offset for the shadow relative to the center point of the mech's sprite in the battle scene.<br>
-\<mechBattleReferenceSize:3\> The world space size of the Mech's sprite. This size is used for determining the size and position of the unit's barrier.<br>
-\<mechBattleSceneDeathAnim:1\> Specifies the id of a battle animation to be played when the mech is destroyed. If omitted the default death animation is used.
-\<mechBattleYOffset: 1\> If specified the main sprite for the unit will be offset by the given amount. The offset is specified in world units.
+Settings are managed in the Battle Scene section of the Mech editor.
+
+* Folder: The name of the sub directory in the img/SRWBattleScene folder that houses the image files for the Mech. <br>
+* Sprite Type: Default, Spriter or Dragonbones
+* Source Size: The height and width of the main.png image for this mech in pixels.<br>
+* Y offset: If specified the main sprite for the unit will be offset by the given amount. The offset is specified in world units.
+* Shadow Scale: The size of the shadow displayed for the mech in the battle scene.<br>
+* Shadow Z Offset: The z offset for the shadow relative to the center point of the mech's sprite in the battle scene in world units.<br>
+* Shadow X Offset: The x offset for the shadow relative to the center point of the mech's sprite in the battle scene in world units.<br>
+* World Size The world space size of the Mech's sprite. This size is used for determining the size and position of the unit's barrier.<br>
+* Death Animation: Specifies the id of a battle animation to be played when the mech is destroyed. If omitted the default death animation is used.
+
+### Basic Battle Sprite
+
+Click the preview in the Basic Battle section to choose the basic battle sprite. Stored in img/basic_battle.
+
+### Map Sprite
+
+Click the preview in the Overworld section to choose the map sprite. Stored in img/characters in standard RPG Maker format.
+
+### Menu Sprite
+
+A separate menu sprite can be selected for a unit, the main battle scene sprite is used by default.
+Click the sprite in the General Info section to select a menu sprite. If the default Sprite is being used "Using fallback!" will be shown below the Sprite preview.
 
 ### Spawn Animation
 
-The listed values are the defaults
-
-\<mechSpawnAnimName:SRWAppear\> The name of the sprite sheet found in img/animations<br>
-\<mechSpawnAnimFrameSize:192\> The width and height of the frames of the animation<br>
-\<mechSpawnAnimSheetWidth:5\> The width in frames of the sprite sheet<br>
-\<mechSpawnAnimFrames:8\> The number of animation frames to use from the sprite sheet<br>
-\<mechSpawnAnimSpeed:2\> The speed of the animation in frames spent for each frame of the animation<br>
-\<mechSpawnAnimAppearFrame:3\> The frame on which the unit that is being spawned will become visible<br>
-\<mechSpawnAnimSoundEffect:SRWAppear\> The sound effect that plays when spawning the unit<br>
+* Animation The name of the sprite sheet found in img/animations<br>
+* Frame Size The width and height of the frames of the animation in pixels<br>
+* Frames: The number of animation frames to use from the sprite sheet<br>
+* Sheet Width: The width in frames of the sprite sheet<br>
+* Animation Speed: The speed of the animation in frames spent for each frame of the animation<br>
+* Change on frame: The frame of the animation on which the unit that is being spawned will become visible<br>
+* Sound effect The sound effect that plays when spawning the unit<br>
 
 ### Destroy Animation
 
-The listed values are the defaults
-
-\<mechDestroyAnimName:Explosion1\> The name of the sprite sheet found in img/animations<br>
-\<mechDestroyAnimFrameSize:192\> The width and height of the frames of the animation<br>
-\<mechDestroyAnimSheetWidth:5\> The width in frames of the sprite sheet<br>
-\<mechDestroyAnimFrames:8\> The number of animation frames to use from the sprite sheet<br>
-\<mechDestroyAnimSpeed:2\> The speed of the animation in frames spent for each frame of the animation<br>
-\<mechDestroyAnimDisappearFrame:3\> The frame on which the unit that is being destroyed will become visible<br>
-\<mechDestroyAnimSoundEffect:SRWExplosion\> The sound effect that plays when destroying the unit<br>
+* Animation The name of the sprite sheet found in img/animations<br>
+* Frame Size The width and height of the frames of the animation in pixels<br>
+* Frames: The number of animation frames to use from the sprite sheet<br>
+* Sheet Width: The width in frames of the sprite sheet<br>
+* Animation Speed: The speed of the animation in frames spent for each frame of the animation<br>
+* Change on frame: The frame of the animation on which the unit that is being spawned will become invisible<br>
+* Sound effect The sound effect that plays when spawning the unit<br>
 
 
 # Attacks
 
 ## Definition
 
-Attacks are Weapons in vanilla RPG Maker Terms. Of the default RPG Maker properties only the Name is used.<br>
-The rest of the Attack properties are set using metadata tags in the note field. It is recommended to create a new Attack by copying an existing, fully defined, one and changing the properties as needed. The following is an annotated example:<br>
+Launch the game and on the title screen hit F11 to access the built-in editor.
 
-\<weaponAttribute1:holy\>Used if ENABLE\_ATTRIBUTE\_SYSTEM is on. If defined it will be used instead of the attacking mechs primary attribute.<br>
-\<weaponAttribute2:holy\>Used if ENABLE\_ATTRIBUTE\_SYSTEM is on. If defined it will be used instead of the attacking mechs secondary attribute.<br>
-\<weaponType:M\>M for melee, R for ranged<br>
-\<weaponPostMoveEnabled:1\>1 if the weapon can be used after moving, otherwise 0<br>
-\<weaponPower:3500\><br>
-\<weaponMinRange:1\><br>
-\<weaponRange:3\><br>
-\<weaponHitMod:15\><br>
-\<weaponCritMod:10\><br>
-\<weaponAmmo:-1\>Total ammo for the weapon, -1 if the weapon does not use ammo<br>
-\<weaponEN:5\>EN cost for using the weapon, -1 if the weapon does not have a cost<br>
-\<weaponWill:-1\>Will requirement for the weapon, -1 if there is no requirement<br>
-\<weaponTerrain:AA-A\>If a terrain value is "-" the weapon cannot be used on enemies who are currently on a tile of that terrain.<br>
-\<weaponAnimId:3\>The battle scene attack animation id that will be played for this weapon. If no id is provided the default animation will play.<br>
-\<weaponCategory:missile\> The particle type of the weapon: missile, funnel, beam, gravity, physical or  "".	
-\<weaponIsCounter:1\> If set to 1 the weapon will always trigger a Counter on the enemy turn. <br>
-\<weaponIsCounterOnly:1\> If set to 1 the weapon can only be used to counter attack. <br>
-\<weaponHPThreshold:50\> If set this weapon will only be usable when the user's HP falls below the specified value(percent). This property is also respected by the enemy AI.<br>
-\<weaponIsAll:1\> If set to 1 this weapon is treated as an ALL weapon and will hit both targets when targeting a twin. A note will be shown in the attack list to identify the weapon as an ALL weapon.
-\<weaponHPThreshold:50\> If set this weapon will only be usable when the user's HP falls below the specified value(percent). This property is also respected by the enemy AI.
 
+* Animation: The battle scene attack animation id that will be played for this weapon. If no id is provided the default animation will play.<br>
+* Type Ranged or Melee<br>
+* Post Move: Enable to allow the weapon to be used after moving<br>
+* Power<br>
+* Min Range<br>
+* Range:<br>
+* HitMod: Boost to hit rate in percent<br>
+* CritMod: Boost to crit rate in percent<br>
+* Ammo: Total ammo for the weapon, -1 if the weapon does not use ammo<br>
+* EN: EN cost for using the weapon, -1 if the weapon does not have a cost<br>
+* Will: Will requirement for the weapon, -1 if there is no requirement<br>
+* Terrain: If a terrain value is "-" the weapon cannot be used on enemies who are currently on a tile of that terrain.<br>
+* The weapon upgrade type determines how much power the weapon gains when upgraded.
+* Category: The particle type of the weapon: ex: missile, funnel, beam, gravity, physical. Can be any value.	
+* Always counter: If enabled the weapon will always trigger a Counter on the enemy turn. <br>
+* IsCounterOnly:  If enabled the weapon can only be used to counter attack. <br>
+* HPThreshold: If set this weapon will only be usable when the user's HP falls below the specified value(percent). This property is also respected by the enemy AI.<br>
+* IsAll:  If enabled this weapon is treated as an ALL weapon and will hit both targets when targeting a twin. A note will be shown in the attack list to identify the weapon as an ALL weapon.
+* Primary Attribute: Used if ENABLE\_ATTRIBUTE\_SYSTEM is on. If defined it will be used instead of the attacking mechs primary attribute.<br>
+* Secondary Attribute:Used if ENABLE\_ATTRIBUTE\_SYSTEM is on. If defined it will be used instead of the attacking mechs secondary attribute.<br>
  
-Weapons can have up to two special effects.
+Weapons can have up to 10 special effects.
 
-\<weaponEffect0:0\><br>
-\<weaponEffect1:1\><br>
-
-
-\<weaponMapId: 0\>The id of the MAP attack definition for the weapon. If this tag is included the weapon will be treated as a MAP attack.<br>
-\<weaponIgnoresFriendlies:1\> If set to 1 the map weapon will not damage friendly units. If set to 0, or if the property is omitted, it will.
-
-\<weaponUpgradeType:0\><br> Sets the growth type for the weapon's power when upgraded.
+If a weapon has a map attack Id assigned it will function as map attack, other wise it functions as a normal attack.
 
 ## Combinations Attacks
 
 Combinations attacks are attacks that require other units with a matching attack to either be adjacent to the current attacker or present on the field before the attack can be used. When a Combination Attack is used all participants will take the EN or ammo cost for the attack.
 
-A combination attack has the following additional metadata:
+If any combo weapons are defined the attack is treated as a Combo Attack.
 
-\<weaponComboType:0> If 0 or omitted the attack can only be used if units with all required combo weapons are adjacent to each other and the attacker. If 1 the other units can be anywhere on the map.<br>
+A combination attack has the following properties:
 
-\<weaponComboWeapons:\[7,8\]\> The ids of the other weapons that are required for the attack. Only one weapon can be provide per unit, so if two weapons are required then 2 units will need to be available to provide them.
+* Type: If "Adjacent" the attack can only be used if units with all required combo weapons are adjacent to each other and the attacker. If "On Map" the other units can be anywhere on the map.<br>
+
+* Required Weapons: Thee other weapons that are required for the attack. Only one weapon can be provide per unit, so if two weapons are required then 2 units will need to be available to provide them.
 
 ## MAP Attacks
 
-MAP attacks are defined in: js/plugins/config/active/MapAttacks.conf.js<br>
-A definition may look as follows: <br>
-
-```javascript
-
-this.addDefinition(
-	0, //the id of the definition
-	[[1,0],[1,1],[1,-1],[2,0],[2,1],[2,-1],[3,0],[3,1],[3,-1]], //the tiles for the range of the attack as seen when the attack is targeted to the right of the user
-	{
-		offset: { // the offset for the animation for each direction. Note: a tile is 48x48
-			up: {x: 0, y: -48},
-			down: {x: 0, y: 0},
-			left: {x: -24, y: -24},
-			right: {x: 24, y: -24},
-		},	
-		animId: 72, // the id of the RPG maker animation to play
-		scale: 0.7 // rescale the animation for display
-	},
-	false, //if true the player will not be able to rotate the map attack
-	{faceName: "Actor3", faceIdx: 7, text: "Marsha\nGet a load of this!"} // specifies a text box to show before the map attack animation plays. 
-);
-```
-
-The definition defines the MAP attack as it should look when the user is targeting it to the right. The engine will automatically translate this when the targeting direction changes.
+Map attacks can be managed through the Weapon editor.
 
 
 # Spirit Commands
@@ -1367,7 +1091,7 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 
 * transformEvent event\_id idx no\_sfx
 
-	Transforms the event with the specified id into the transformation with the specified index. The unit for the event should be able to transform! If no\_s
+	Transforms the event with the specified id into the transformation with the specified index. The unit for the event should be able to transform! If no\_sfx is 1 no transformation sfx is played.
 
 * combineEvent event\_id
 
@@ -1586,6 +1310,7 @@ Also note that only one reticle can be shown at a time.
 	Move any unit that is currently adjacent to the specified actor to a free space. Spaces that make it look like the unit was pushed away are preferred.	
 	
 * stopSkipping
+
 
 	A command that ensures auto skipping stops. Normally not needed as important commands will stop auto skipping by themselves.	
 	
