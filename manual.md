@@ -229,7 +229,6 @@ Units can be given the ability to automatically transform into other units when 
 
 Units can be given the ability to automatically transform into other units if another unit is present or missing on the map.  
 
-**This property should not be used on Battle Ship units!**<br>
 
 ### Combining Units
 
@@ -347,6 +346,7 @@ Launch the game and on the title screen hit F11 to access the built-in editor.
 * EN: EN cost for using the weapon, -1 if the weapon does not have a cost<br>
 * Will: Will requirement for the weapon, -1 if there is no requirement<br>
 * Terrain: If a terrain value is "-" the weapon cannot be used on enemies who are currently on a tile of that terrain.<br>
+
 * The weapon upgrade type determines how much power the weapon gains when upgraded.
 * Category: The particle type of the weapon: ex: missile, funnel, beam, gravity, physical. Can be any value.	
 * Always counter: If enabled the weapon will always trigger a Counter on the enemy turn. <br>
@@ -1286,6 +1286,23 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 
 	Unlocks the Transform option for all mechs.	
 	
+
+* lockCombine mech\_id
+
+	Locks the Combine option for the mech with the specified id.
+	
+* lockAllCombines
+
+	Locks the Combine option for all mechs.	
+		
+* unlockCombine mech\_id
+
+	Unlocks the Combine for the mech with the specified id.
+
+* unlockAllCombines
+
+	Unlocks the Combine option for all mechs.		
+	
 * setFaceAlias face\_name\_original face\_name\_translated
 
 	Sets a face alias. When a face name specified by face\_name\_original is aliased it will be replaced by face\_name\_translated when fetching the face image. This can be used to more easily manage variable characters, such as when protagonist selection is implemented.
@@ -2086,6 +2103,7 @@ Input.keyMapper = {
 	104: 'up',      // numpad 8
 	120: 'debug',    // F9
 	36: "left_trigger", //home
+
 	35: "right_trigger", //end
 	45: "L3"
 };
