@@ -12,10 +12,10 @@ This manual will serve as a reference for available commands and other misc. inf
 A text box is defined as follows:
 
 ```
-	*Harold
-	This is a text box!
-	It can have up to
-	Three lines! 
+*Harold
+This is a text box!
+It can have up to
+Three lines! 
 
 ```
 
@@ -27,13 +27,13 @@ Other expressions can be used as follows:
 
 ```
 	
-	*Harold
-	This is a text box!
-	It can have up to
-	Three lines! 
-	
-	*Harold angry
-	Reading docs is very upsetting!
+*Harold
+This is a text box!
+It can have up to
+Three lines! 
+
+*Harold angry
+Reading docs is very upsetting!
 ```
 
 When inserting text it is important that there's one(and only one!) newline between text boxes. When interpreted the above will show two textboxes in succession.
@@ -42,11 +42,11 @@ When inserting text it is important that there's one(and only one!) newline betw
 To do non-character text the following can be done:
 
 ```
-	*TEXT
-	Generic text line 1
-	Generic text line 2
-	Generic text line 3
-	Generic text line 4
+*TEXT
+Generic text line 1
+Generic text line 2
+Generic text line 3
+Generic text line 4
 
 ```
  
@@ -58,10 +58,10 @@ To do non-character text the following can be done:
 Sometimes you may not want a unit to be auto focused when a text box for them is shown. In that case add a one after the expression name.
 
 ```
-	*Harold 0 1
-	This is a text box!
-	It can have up to
-	Three lines! 
+*Harold 0 1
+This is a text box!
+It can have up to
+Three lines! 
 
 ```
 
@@ -75,14 +75,14 @@ Script characters are defined in data/ScriptCharacters.json. This file defines e
 
 ```
 
-	"Harold": {
-		"nameVar": -1,
-		"actorId": 	1,
-		"expressions": {
-			"0": {"face": "Actor1", "index": 0},
-			"angry": {"face": "Actor1", "index": 1}
-		}
-	},
+"Harold": {
+	"nameVar": -1,
+	"actorId": 	1,
+	"expressions": {
+		"0": {"face": "Actor1", "index": 0},
+		"angry": {"face": "Actor1", "index": 1}
+	}
+},
 
 ```
 
