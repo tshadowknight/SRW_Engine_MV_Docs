@@ -146,6 +146,15 @@ Each stage has Victory conditions,  Defeat conditions and Mastery conditions. Th
 	- Empty Tile: Toggle the Will indicator for each unit on the map
 	- Unit: Show the details of the unit
 * Shift/Square: (held)Speed up the cursor
+
+# VN Scenes
+
+The controls in VN scenes are:
+
+* Z/Cross: Next line, hold for automatic text(fast)
+* Z/Cross + Page down/R1: hold for very fast text
+* Z/Cross + Enter/Start: Skip to the next key event
+* Enter: Show the text log
 	  
 # Menus
 ## Controls
