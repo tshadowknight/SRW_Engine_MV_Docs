@@ -120,7 +120,6 @@ For pilots and mechs the combined terrain ranking is used:
 * B + A = A
 * A + A = A
 * A + S = A
-* A + S = S
 
 ### Bonuses
 Some types of terrain may give certain bonuses to units that are on them. These bonus can be to Evasion, Defense, HP Regeneration and EN Regeneration.
@@ -153,7 +152,7 @@ The controls in VN scenes are:
 
 * Z/Cross: Next line, hold for automatic text(fast)
 * Z/Cross + Page down/R1: hold for very fast text
-* Z/Cross + Enter/Start: Skip to the next key event
+* Z/Cross + Page down/R1 + Page up/L1: Skip to the next key event
 * Enter: Show the text log
 	  
 # Menus
