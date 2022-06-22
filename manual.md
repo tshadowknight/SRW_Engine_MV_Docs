@@ -1398,8 +1398,17 @@ Also note that only one reticle can be shown at a time.
 
 	Sets the maximum will for enemies back to the default.	
 	
+* setTerrainSolidForEnemy terrain\_id
 	
+	Sets the terrain with the specified id as impassable for enemy units. In effect until explicitly cleared0	
 		
+* setTerrainPassableForEnemy
+
+	Sets the terrain with the specified id as passable for enemy units. Does not override standard terrain passibility for units!
+	
+* refundMechUpgrades mech\_id 
+	
+	Refunds all upgrades for the mech with the specified id and sets them to zero.			
 
 ## External Plugin commands	
 
