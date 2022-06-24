@@ -1408,7 +1408,7 @@ Also note that only one reticle can be shown at a time.
 	
 * refundMechUpgrades mech\_id 
 	
-	Refunds all upgrades for the mech with the specified id and sets them to zero			
+	Refunds all upgrades for the mech with the specified id and sets them to zero.			
 
 ## External Plugin commands	
 
@@ -1481,6 +1481,7 @@ They can also be used as conditionals in IF statements.
 	Will be TRUE if the enemy with the specified id was defeated and is about to be destroyed.
 	
 * this.isEventDestructionQueued(event\_id)
+
 
 
 	To be used as a conditional in the before_destruction event.<br>
@@ -1616,7 +1617,12 @@ A setting can be left blank by entering "" as its value.
 * this.manualDeploy(unlockedOnly)
 
 	Shows the deployment selection window and lets the player select deployment positions. Event processing will automatically wait for all units to be spawned before continuing execution.
-If unlockedOnly is set to true only units in unlocked slots will be deployed. Units in locked slots will not show up on the map when rearranging but their slots are still visible but marked as locked.
+If unlockedOnly is set to true only units in unlocked slots will be deployed. Units in locked slots will not show up on the map when rearranging but their slots are still visible but marked as locked.<br>
+Note that this command is only safe to be called in the stage intro script!
+
+* this.manualDeployOnActorTurn(unlockedOnly)
+
+	Same functionality as manualDeploy but **must** be used for manual deploys at the start of an actor turn.
 
 * this.manualShipDeploy()
 
@@ -1793,6 +1799,7 @@ This config file allows configuration of engine level settings.
 Possible values: \[true|false\]
 
 If set to true units will have access to Twinning commands once their Will hits 110. Additionally it will possible to deploy twin from the deploy menu and some other menus will be changed to accommodate twins. Note that assigning twins through event scripting will still work even if this setting is disabled.
+
 
 
 
