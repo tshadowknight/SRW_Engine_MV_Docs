@@ -931,7 +931,13 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 	If an event with the specified id exists on the map the cursor will be set to its position.<br>
 	If free\_camera is 1 the camera will not move with the cursor.<br>
 	If the matching actor does not exist or the actor was erased, nothing happens.<br>
-	This command should be used to focus enemies, as those enemy ids will usually not be unique on the map!
+	
+* focusEnemy enemy\_id free\_camera
+
+	If an enemy with the specified id exists on the map the cursor will be set to its position.<br>
+	If free\_camera is 1 the camera will not move with the cursor.<br>
+	If the matching enemy does not exist or the enemy was erased, nothing happens.<br>
+	If an enemy id for an enemy type that exists multiple times on the map is used the enemy with the lowest event id will be selected.
 	
 * clearDeployInfo
 
@@ -1149,6 +1155,10 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 * setEventWill event\_id amount
 	
 	Set the will of the unit for the specified event.
+	
+* setEventWillOverflow	event\_id amount 
+
+	Set a new cap for the event's Will for the duration of the stage.
 
 * setActorWill actor\_id amount
 	
@@ -1481,6 +1491,7 @@ They can also be used as conditionals in IF statements.
 	Will be TRUE if the enemy with the specified id was defeated and is about to be destroyed.
 	
 * this.isEventDestructionQueued(event\_id)
+
 
 
 
