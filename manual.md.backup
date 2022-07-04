@@ -1055,6 +1055,15 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 * moveEventToPoint event\_id x y follow no\_wait respect\_collision
 
 	Move the specified event to the specified coordinates on the map. A route is automatically generated in the same way as when moving a unit on the map. Script execution is paused while the event is moving. If follow is 1 the cursor and camera will follow the event as it moves. Only one event of this type can run at the same time. If no\_wait is 1 script execution will not wait for the unit to move to continue. If respect\_collision is 1 the unit moved will move while respecting the collision of the terrain.
+
+* storeEventPoint event\_id
+
+	Stores the current position of the event with the specified id for later use with the moveEventToStoredPoint command. 
+	The point is not stored across save file loads and should be used within the same event!
+	
+* moveEventToStoredPoint event\_id follow no\_wait respect\_collision
+
+	Moves the event with the specified id to the last position stored for that id with the storeEventPoint command.  A route is automatically generated in the same way as when moving a unit on the map. Script execution is paused while the event is moving. If follow is 1 the cursor and camera will follow the event as it moves. Only one event of this type can run at the same time. If no\_wait is 1 script execution will not wait for the unit to move to continue. If respect\_collision is 1 the unit moved will move while respecting the collision of the terrain.
 	
 * moveActorToPoint actor\_id x y follow no\_wait respect\_collision
 
