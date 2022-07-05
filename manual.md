@@ -293,6 +293,17 @@ Settings are managed in the Battle Scene section of the Mech editor.
 * World Size The world space size of the Mech's sprite. This size is used for determining the size and position of the unit's barrier.<br>
 * Death Animation: Specifies the id of a battle animation to be played when the mech is destroyed. If omitted the default death animation is used.
 
+Each mech should have an image file for the default poses in its SRWBattleScene folder.
+The required default poses are:
+
+    main: Idle pose
+    in: Leaning in while moving
+    out: Leaning back while moving
+    hurt
+    dodge
+
+For units that use regular sprites each of these default poses should have a matching .png file in the correct character folder(main.png, hurt.png, etc.)
+
 ### Basic Battle Sprite
 
 Click the preview in the Basic Battle section to choose the basic battle sprite. Stored in img/basic_battle.
@@ -1678,6 +1689,7 @@ Note that this command is only safe to be called in the stage intro script!
 	Instantly move the cursor to the specified coordinates.
 
 
+
 * this.isActorInRegion(actor\_id, region\_id)
 
 	Can be used as a conditional to detect if the actor with the specified actor id is currently on a tile from the region with the specified id.<br>
@@ -1950,6 +1962,7 @@ Defines the cost types for unit upgrades.
 		},
 		WEAPON: {
 			0: [12000, 17000, 23000, 30000, 38000, 47000, 57000, 68000, 80000, 93000, 90000, 90000, 90000, 90000, 90000]
+
 		}
 	},
 ```
