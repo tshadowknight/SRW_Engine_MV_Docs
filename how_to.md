@@ -76,8 +76,8 @@ In the following excerpts using the custom scripting format will be shown.
 Commands are put into brackets, followed with a colon. These commands are either basic RPG Maker scripting functions(like setting a variable) or plugin commands.
 
 ```  
-	[setVar: 20 1] //set variable 20 to 1
-	[deployActor: 10 20] //deploy actor 10 to event 20
+[setVar: 20 1] //set variable 20 to 1
+[deployActor: 10 20] //deploy actor 10 to event 20
 ```
 
 For details on all available commands refer to the main manual.
@@ -98,19 +98,19 @@ Fade in the screen by using a fade in command.
 Using a scripting command set the stage condition text:
 
 ```  
-	this.setMasteryText("Deafeat X within 4 turns.");
-	this.setVictoryText("X defeated.");
-	this.setDefeatText("Y defeated.");  
+this.setMasteryText("Deafeat X within 4 turns.");
+this.setVictoryText("X defeated.");
+this.setDefeatText("Y defeated.");  
 ```
 #### Confirming the deployment settings
 
 Example: Clear the old info, set the max number of units to 16, assign pilot 15 to slot 0 and lock slot 0 so the player can't change it
 
 ```
-	[clearDeployInfo:]
-	[setDeployCount: 16]
-	[assignSlot: 0 15]
-	[lockDeploySlot: 0]
+[clearDeployInfo:]
+[setDeployCount: 16]
+[assignSlot: 0 15]
+[lockDeploySlot: 0]
 ```
 
 Optional:
@@ -147,7 +147,7 @@ Using a series of show picture and textbox commands the VN scene for the start o
 Use 
 
 ```
-	call transition_scene(picture\_name, fade duration, new music name)
+call transition_scene(picture\_name, fade duration, new music name)
 ```
 
 In the custom stage format instead, which will automatically use a fade to switch out the current picture and will fade in to the new music if specified.
@@ -159,7 +159,7 @@ Hide all shown pictures to display the playing field using hide background comma
 Use 
 
 ```
-	call transition_map()
+call transition_map()
 ```
 
 In the custom stage format instead, which will automatically do the fades for you. Only works if picture #1 was used for the backgrounds
@@ -172,7 +172,7 @@ In the custom stage format instead, which will automatically do the fades for yo
 Use 
 
 ```
-	call stage_title(This is my first map)
+call stage_title(This is my first map)
 ```
 
 In the custom stage format instead.
