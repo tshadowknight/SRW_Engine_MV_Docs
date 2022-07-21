@@ -1174,6 +1174,8 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 
 * setEventWill event\_id amount
 	
+
+
 	Set the will of the unit for the specified event.
 	
 * setEventWillOverflow	event\_id amount 
@@ -1269,6 +1271,8 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 	Set the specified ability to hidden for the specified actor. A hidden ability will not have its name displayed.
 		
 * lockPilotAbility actor\_id ability\_id
+
+
 
 	Set the specified ability to locked for the specified actor. A locked ability will not have its name displayed and its effect will not activate.	
 		
@@ -1438,8 +1442,15 @@ Also note that only one reticle can be shown at a time.
 	
 * refundMechUpgrades mech\_id 
 	
-	Refunds all upgrades for the mech with the specified id and sets them to zero.			
+	Refunds all upgrades for the mech with the specified id and sets them to zero.		
 
+* setActorSong actor\_id song\_name
+
+	Sets the battle song for the actor with the specified id to the specified song name.	
+	
+* setActorWeaponSong actor\_id weapon\_id song\_name
+	
+	Sets the battle song for the actor with the specified id when using the weapon with the specified id to the specified song name.	
 ## External Plugin commands	
 
 These are plugin commands provided by external plugins.
@@ -1815,6 +1826,14 @@ function\_id refers to the value of the function tag.<br>
 * this.showTextCrawl(crawl\_id, is\_cancellable)	
 
 	Shows a text crawl of the text defined in APPSTRINGS.TEXT_CRAWLS, identified by crawl\_id. The event script execution is halted until the text crawl completes. If is\_cancellable is true the player can skip the text crawl with the B button.
+	
+* this.setCustomWait()	
+
+	Puts the script interpreter into a wait state until clearCustomWait is called.
+	
+* this.clearCustomWait()
+	
+	Clears the custom wait state if set.	
 
 # Plugin Config
 
