@@ -1176,6 +1176,7 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 	
 
 
+
 	Set the will of the unit for the specified event.
 	
 * setEventWillOverflow	event\_id amount 
@@ -1443,6 +1444,10 @@ Also note that only one reticle can be shown at a time.
 * refundMechUpgrades mech\_id 
 	
 	Refunds all upgrades for the mech with the specified id and sets them to zero.		
+
+* refundPilotPP pilot\_id
+	
+	Refunds all upgrades for the pilot with the specified id and sets them to zero.	Also removes any abilities learned through level up.	
 
 * setActorSong actor\_id song\_name
 
