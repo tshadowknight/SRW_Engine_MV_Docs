@@ -1177,6 +1177,8 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 
 
 
+
+
 	Set the will of the unit for the specified event.
 	
 * setEventWillOverflow	event\_id amount 
@@ -1456,6 +1458,11 @@ Also note that only one reticle can be shown at a time.
 * setActorWeaponSong actor\_id weapon\_id song\_name
 	
 	Sets the battle song for the actor with the specified id when using the weapon with the specified id to the specified song name.	
+	
+* addFunds amount
+
+	Adds the specified amount to the player's funds.
+	
 ## External Plugin commands	
 
 These are plugin commands provided by external plugins.
@@ -1839,6 +1846,24 @@ function\_id refers to the value of the function tag.<br>
 * this.clearCustomWait()
 	
 	Clears the custom wait state if set.	
+	
+* this.setEventAbilityZone(event\_id, zone\_params)
+	
+	Creates a zone for the event with the specified id with the specified parameters. Will do nothing if no zone slots(max 8 default) are available. 
+	
+	Example:
+	
+	```  
+		this.setEventAbilityZone(11,{
+			pattern: 1,//the pattern defined in the pattern editor, will be centered on the actor
+			abilityId: 0,//the id of the effect definition in ZoneAbilities.conf.js
+			followsOwner: true,//if true the zone moves with the setter, otherwise it stays put
+			color: "#FF0000",			
+			phaseCount: 2,//the number of phases the zone stays active, only used if expires == true
+			expires: true
+		})	  
+	```
+		
 
 # Plugin Config
 
