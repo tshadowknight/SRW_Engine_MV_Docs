@@ -875,6 +875,9 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 
 * lockUnit class\_id
 	Make the mech with the specified id not available to the player.
+	
+* assignUnit actor\_id class\_id
+	Assign the mech with the specified id to the pilot with the specified id.	
 
 * SetLevel actor\_id level
 
@@ -904,11 +907,6 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 	Adds one of each existing item to the inventory.
 			
 * removeItem
-
-
-
-
-
 	Removes one of the specified item from the inventory.	
 
 * addItemToHolder item\_id mech\_id slot
@@ -1174,6 +1172,7 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 
 * setEventWill event\_id amount
 	
+
 
 
 

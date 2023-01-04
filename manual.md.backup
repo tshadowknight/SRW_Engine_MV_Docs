@@ -875,6 +875,8 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 
 * lockUnit class\_id
 	Make the mech with the specified id not available to the player.
+	
+* assignUnit actor\_id cla	
 
 * SetLevel actor\_id level
 
@@ -904,11 +906,6 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 	Adds one of each existing item to the inventory.
 			
 * removeItem
-
-
-
-
-
 	Removes one of the specified item from the inventory.	
 
 * addItemToHolder item\_id mech\_id slot
@@ -1174,6 +1171,7 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 
 * setEventWill event\_id amount
 	
+
 
 
 
@@ -1850,18 +1848,19 @@ function\_id refers to the value of the function tag.<br>
 * this.setEventAbilityZone(event\_id, zone\_params)
 	
 	Creates a zone for the event with the specified id with the specified parameters. Will do nothing if no zone slots(max 8 default) are available. 
+	
 	Example:
 	
-```  
-	this.setEventAbilityZone(11,{
-		pattern: 1,
-		abilityId: 0,
-		followsOwner: true,
-		color: "#FFFF00",			
-		phaseCount: 2,
-		expires: false
-	})	  
-```
+	```  
+		this.setEventAbilityZone(11,{
+			pattern: 1,//the pattern defined in the pattern editor, will be centered on the actor
+			abilityId: 0,//the id of the effect definition in ZoneAbilities.conf.js
+			followsOwner: true,//if true the zone moves with the setter, otherwise it stays put
+			color: "#FF0000",			
+			phaseCount: 2,//the number of phases the zone stays active, only used if expires == true
+			expires: true
+		})	  
+	```
 		
 
 # Plugin Config
