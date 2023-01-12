@@ -1462,6 +1462,10 @@ Also note that only one reticle can be shown at a time.
 
 	Adds the specified amount to the player's funds.
 	
+* addSubPilot mech\_id  slot actor\_id
+
+	Sets the specified actor as a subpilot for the specified mech in the specified slot(starts at 0).
+	
 ## External Plugin commands	
 
 These are plugin commands provided by external plugins.
@@ -1776,6 +1780,7 @@ Note that this command is only safe to be called in the stage intro script!
 	Grants the SR point for the current stage. Does not award the point if the SR point is locked for the current stage. If the point was newly awarded it automatically displays the reward text and plays a sound effect.	
 	
 * this.showEnemyPhase()
+
 
 	Show text declaring the start of an enemy phase. Automatically shows the correct faction color and displays "Ally Phase" instead if a faction is configured to be friendly to the player.	
 

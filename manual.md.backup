@@ -876,7 +876,8 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 * lockUnit class\_id
 	Make the mech with the specified id not available to the player.
 	
-* assignUnit actor\_id cla	
+* assignUnit actor\_id class\_id
+	Assign the mech with the specified id to the pilot with the specified id.	
 
 * SetLevel actor\_id level
 
@@ -1461,6 +1462,10 @@ Also note that only one reticle can be shown at a time.
 
 	Adds the specified amount to the player's funds.
 	
+* addSubPilot mech\_id  slot actor\_id
+
+	Sets the specified actor as a subpilot for the specified mech in the specified slot(starts at 0).
+	
 ## External Plugin commands	
 
 These are plugin commands provided by external plugins.
@@ -1775,6 +1780,7 @@ Note that this command is only safe to be called in the stage intro script!
 	Grants the SR point for the current stage. Does not award the point if the SR point is locked for the current stage. If the point was newly awarded it automatically displays the reward text and plays a sound effect.	
 	
 * this.showEnemyPhase()
+
 
 	Show text declaring the start of an enemy phase. Automatically shows the correct faction color and displays "Ally Phase" instead if a faction is configured to be friendly to the player.	
 
