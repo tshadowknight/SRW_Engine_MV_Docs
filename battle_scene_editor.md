@@ -92,6 +92,14 @@ The Spine project file should contain one skeleton named skeleton and have the f
 
 It can have any number of additional animations that can be called with the set\_sprite\_frame animation command by name.
 
+#### Looping animations
+
+Whether any of the animations of a mech loop is set in the Spine project file as follows:
+
+* Be in Setup mode
+* Create an event called loop
+* In the String field of the loop event, list all animations by name that should loop separated by a comma. (Ex.: main,dodge)
+
 ### 3D Models
 
 The battle scene supports using 3D Models as unit "sprites".   
@@ -126,15 +134,6 @@ When loading a model the attachments will be set to invisible by default.
 An object can be attached to a model's attachment by setting a parent for the object like "parent\_object\_name:attachment\_name"(Ex.: active\_main:att\_hand) in the parent field for the creation command of the object.
 
 An attachment can be revealed or hidden using the ""show\_attachment" and ""hide\_attachment" animation commands.
-
-
-#### Looping animations
-
-Whether any of the animations of a mech loop is set in the Spine project file as follows:
-
-* Be in Setup mode
-* Create an event called loop
-* In the String field of the loop event, list all animations by name that should loop separated by a comma. (Ex.: main,dodge)
 
 ### Effekseer Support
 
