@@ -59,6 +59,7 @@ These sprites are linked to the real mech/class taking part in the Battle Scene 
 * out: Leaning back while moving
 * hurt
 * dodge
+* block
 
 For units that use regular sprites each of these default poses should have a matching .png file in the correct character folder(main.png, hurt.png, etc.)
 
@@ -89,8 +90,43 @@ The Spine project file should contain one skeleton named skeleton and have the f
 * block: The animation shown when the mech blocks
 * dodge: The animation shown when the mech dodges
 
-
 It can have any number of additional animations that can be called with the set\_sprite\_frame animation command by name.
+
+### 3D Models
+
+The battle scene supports using 3D Models as unit "sprites".   
+To use a 3d model set the Sprite Type to 3D.
+
+The following config setting are available:  
+
+* Scale: A uniform scaling factor applied to model. Tweak this setting until the model fits the default scene layout.
+* Rotation(deg): A default rotation applied to the model.
+
+The model for the unit must be stored in a folder called "3d" in the SRWBattleScene folder for the class (Ex.: img/SRWBattleScene/harold/3d).
+
+The model file must be .glb file and be named "model.glb" (Ex.: img/SRWBattleScene/harold/3d/model.glb").
+
+The model should have a default animation for each default pose. When using blender animations correspond to actions in the action editor, the name of the action should match the pose name.
+
+* main: The idle pose for the mech
+* in: The moving forward pose for the mech
+* out: The moving backwards pose for the mech
+* hurt: The taking damage pose for the mech
+* block: The animation shown when the mech blocks
+* dodge: The animation shown when the mech dodges  
+
+Additional animations may be present in the model file and can be played using the "set\_sprite\_frame" animation command.
+If the snap parameter on the command is not set the engine will blend the end state of the current animation into the next animation, if set no blending is done.
+
+#### Attachments
+
+Models may have any number of attachments. These attachments can be used as a reference point to attach other objects to in the battle scene or can be used as part of specific model animations. An attachment must be a top level mesh and have a name starting with "att_".
+When loading a model the attachments will be set to invisible by default.
+
+An object can be attached to a model's attachment by setting a parent for the object like "parent\_object\_name:attachment\_name"(Ex.: active\_main:att\_hand) in the parent field for the creation command of the object.
+
+An attachment can be revealed or hidden using the ""show\_attachment" and ""hide\_attachment" animation commands.
+
 
 #### Looping animations
 
