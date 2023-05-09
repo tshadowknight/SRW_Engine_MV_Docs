@@ -1462,6 +1462,14 @@ Also note that only one reticle can be shown at a time.
 * setTextRemote on_off
 
 	If on_off = 1 all next text boxes will display with remote distortion effect.	
+		
+* setLocationHeader location
+
+	Set the location header to the specified value and display it.
+
+* clearLocationHeader
+
+	Removes the current location header.	
 	
 ## External Plugin commands	
 
