@@ -1461,10 +1461,16 @@ Also note that only one reticle can be shown at a time.
 	
 * setPortraitOverlay id
 
-	Set an overlay for the portrait in the textbox. The overlay should be 2x8 spritesheet in the img/system folder with the name PortraitOverlay_[id].png
+	Add an overlay for the portrait in the textbox. The overlay should be 2x8 spritesheet in the img/system folder with the name PortraitOverlay_[id].png. Frames are of face width and face height in dimensions.   
+	Overlays are drawn in the order they were added, so the last one is drawn last and will be on top.
 	
-* hidePortraitOverlay
-	Hides any visible portrait overlays.	
+* hidePortraitOverlay id
+
+	Hides the portrait overlay with the specified id.	
+	
+* hideAllPortraitOverlays
+
+	Hides all portrait overlays.
 		
 * setLocationHeader location
 
