@@ -1459,9 +1459,12 @@ Also note that only one reticle can be shown at a time.
 
 	Sets the specified actor as a subpilot for the specified mech in the specified slot(starts at 0).
 	
-* setTextRemote on_off
+* setPortraitOverlay id
 
-	If on_off = 1 all next text boxes will display with remote distortion effect.	
+	Set an overlay for the portrait in the textbox. The overlay should be 2x8 spritesheet in the img/system folder with the name PortraitOverlay_[id].png
+	
+* hidePortraitOverlay
+	Hides any visible portrait overlays.	
 		
 * setLocationHeader location
 
