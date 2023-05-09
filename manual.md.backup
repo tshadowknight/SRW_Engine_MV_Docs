@@ -1171,13 +1171,6 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 	Set the special text id for text on this stage. See the chapter on the Battle Text Editor for more info on special text.
 
 * setEventWill event\_id amount
-	
-
-
-
-
-
-
 	Set the will of the unit for the specified event.
 	
 * setEventWillOverflow	event\_id amount 
@@ -1465,6 +1458,10 @@ Also note that only one reticle can be shown at a time.
 * addSubPilot mech\_id  slot actor\_id
 
 	Sets the specified actor as a subpilot for the specified mech in the specified slot(starts at 0).
+	
+* setTextRemote on_off
+
+	If on_off = 1 all next te	
 	
 ## External Plugin commands	
 
