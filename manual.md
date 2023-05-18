@@ -1466,7 +1466,7 @@ Also note that only one reticle can be shown at a time.
 	
 * hidePortraitOverlay id
 
-	Hides the portrait overlay with the specified id.	
+	Hides the portrait overlay with the specified id. If multiple of the same overlay are currently applied all instances will be removed.
 	
 * hideAllPortraitOverlays
 
@@ -1881,7 +1881,75 @@ function\_id refers to the value of the function tag.<br>
 			expires: true
 		})	  
 	```
-		
+
+* this.playBattleScene(config)
+
+	Play an event battle scene according to the provided config. See the following example config for more information. You can also copy paste this example command and modify it. Note that the default RPG Maker script command box does not allow this many lines and you will need to put lines together to make it work. The custom scripting format does not have this limitation.
+	
+	```
+		this.playBattleScene({
+			eventId: 0, // if included the matching event text will be used for the scene(see BattleText.conf.js).
+			enemyFirst: 0, // if 0 the actor will move first, if 1 the enemy will move first. This also affects the supports. If 0, the actor support will be attacking otherwise defending. If 1, the enemy support will be attacking otherwise defending.
+			songId: "Battle1", // the id of the song that should be played during the battle scene
+			actor: {
+				id: 1, // the id of the actor pilot
+				action: "attack", // the action the actor will take: "attack", "defend", "evade". 
+				weapon: 1, // the id of the attack the actor will use. Only used if the action is "attack".
+				hits: 1, // if 0 the attack performed by this unit will miss, if 1 the attack will hit 
+				startHP: 20, // the start HP of the actor in percent
+				targetEndHP: 5, // the end HP of the target in percent
+				posX: 0, // the x coordinate of the position on the map where this unit stands(optional)
+				posY: 0, // the y coordinate of the position on the map where this unit stands(optional)
+				referenceEventId: 21 // if provided posX, posY and startHP will be derived from this event instead
+			},
+			actorTwin: {
+				id: 2, // the id of the actor pilot
+				action: "attack", // the action the actor will take: "attack", "defend", "evade". 
+				weapon: 3, // the id of the attack the actor will use. Only used if the action is "attack".
+				hits: 1, // if 0 the attack performed by this unit will miss, if 1 the attack will hit 
+				startHP: 20, // the start HP of the actor in percent
+				targetEndHP: 5, // the end HP of the target in percent
+				posX: 0, // the x coordinate of the position on the map where this unit stands(optional)
+				posY: 0, // the y coordinate of the position on the map where this unit stands(optional)
+				referenceEventId: 21 // if provided posX, posY and startHP will be derived from this event instead
+			},
+			actorSupport: { // ommit this section if there is no actor supporter
+				id: 3, // the id of the actor pilot
+				action: "attack", // the action the actor will take: "attack", "defend", "evade". 
+				weapon: 5, // the id of the attack the actor will use. Only used if the action is "attack".
+				hits: 1, // if 0 the attack performed by this unit will miss, if 1 the attack will hit 
+				startHP: 100, // the start HP of the actor in percent
+				targetEndHP: 0, // the end HP of the target in percent
+			},
+			enemy: {
+				id: 1, // the id of the enemy pilot
+				mechId: 10, // the id of the enemy mech
+				weapon: 6, // the id of the attack the actor will use. Only used if the action is "attack".
+				action: "attack", // the action the enemy will take: "attack", "defend", "evade". 
+				hits: 1, // if 0 the attack performed by this unit will miss, if 1 the attack will hit 
+				startHP: 80, // the start HP of the enemy in percent
+				targetEndHP: 5, // the end HP of the target in percent
+			},
+			enemyTwin: {
+				id: 1, // the id of the enemy pilot
+				mechId: 10, // the id of the enemy mech
+				weapon: 6, // the id of the attack the actor will use. Only used if the action is "attack".
+				action: "attack", // the action the enemy will take: "attack", "defend", "evade". 
+				hits: 1, // if 0 the attack performed by this unit will miss, if 1 the attack will hit 
+				startHP: 80, // the start HP of the enemy in percent
+				targetEndHP: 5, // the end HP of the target in percent
+			},
+			enemySupport: { // ommit this section if there is no enemy supporter
+				id: 3, // the id of the enemy pilot
+				mechId: 11,
+				action: "defend", // the action the enemy will take: "attack", "defend", "evade". 
+				hits: 1, // if 0 the attack performed by this unit will miss, if 1 the attack will hit 
+				weapon: -1, // the id of the attack the actor will use. Only used if the action is "attack".
+				startHP: 100, // the start HP of the enemy in percent
+				targetEndHP: 0, // the end HP of the target in percent
+			}			
+		});
+	```	
 
 # Plugin Config
 
