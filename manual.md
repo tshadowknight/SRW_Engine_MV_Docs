@@ -2131,6 +2131,7 @@ The number of kills a unit must have before they qualify as an Ace.
 ### DEFAULT\_SP\_REGEN
 Possible values: \[number\]<br>
 
+
 The number of points of SP recovered at the start of a turn by default.
 
 ### DEFAULT\_HP\_REGEN
@@ -2220,8 +2221,14 @@ The localization file for the engine. This file defines in multiple subsections 
 ```javascript
 $SRWConfig.battleSongs = {
 	actorSongMapping: {// maps an actor id to a song. A song is defined by the name of a .ogg file in the audio/bgm folder
-		1: "Battle1",
-		3: "Battle1"
+		1: "Battle1", //simple mapping
+		3: {//mapping with weapon songs
+			default: "Theme1",//used for any weapon not listed
+			weapons: {//maps a weapon id to a song. A song is defined by the name of a .ogg file in the audio/bgm folder
+				3: "Battle2",
+				5: "Battle3"
+			}
+		},
 	},
 	enemySongMapping: {// maps an enemy id to a song. A song is defined by the name of a .ogg file in the audio/bgm folder
 
