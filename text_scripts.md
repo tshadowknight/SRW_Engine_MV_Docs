@@ -102,7 +102,9 @@ Script characters are defined in data/ScriptCharacters.json. This file defines e
 * hideBackground background\_id					
 * playSE se\_name volume[90] pitch[100] pan[0]
 * playBGM bgm\_name volume[90] pitch[100] pan[0]
-* fadeOutBGM duration					
+* fadeOutBGM duration		
+* playBGS bgm\_name volume[90] pitch[100] pan[0]
+* fadeOutBGS duration				
 * setVar var\_number value
 * addVar var\_number value
 * subVar var\_number value
@@ -121,6 +123,13 @@ Script characters are defined in data/ScriptCharacters.json. This file defines e
 * changePartyMember pilot\_id operation[add|remove]
 * warp map\_id target\_x target\_y
 
+* showPicture picture\_id picture\_name origin[Center|Upper Left] direct\_desgination[Direct|Indirect] x y scaleX[0-100] scaleY[0-100] opacity[0-255] blend\_mode[Normal|Additive|Multiply|Screen]
+* erasePicture picture\_id
+* movePicture picture\_id origin[Center|Upper Left] direct\_desgination[Direct|Indirect] x y scaleX[0-100] scaleY[0-100] opacity[0-255] blend\_mode[Normal|Additive|Multiply|Screen] duration wait[wait]
+* rotatePicture picture\_id speed
+* tintPicture picture\_id tone[r,g,b,gr] duration wait[wait]
+
+		Ex.: [tintPicture 2 34,-34,368,170 60 wait]
 
 ## SRW Engine MV specific commands
 					
@@ -133,5 +142,6 @@ display\_type: top,middle,bottom<br>
 All Plugin Commands specific to SRW Engine MV are available as first tier commands.<br>
 Example: [unlockUnit:] or [moveEventToActor: 5 1]<br>
 There is no need to use the pluginCmd command.
+
 
 See the general manual for info on the functionality of the Plugin Commands.
