@@ -115,7 +115,7 @@ Script characters are defined in data/ScriptCharacters.json. This file defines e
 * pluginCmd plugin\_cmd\_name arg0...argN <br>
 	Note: All engine commands are available first tier commands in this scripting format, so this command should generally not be used.
 * gameOver
-* shakeScreen intensity\_x intensity\_y duration wait[wait] 
+* shakeScreen power speed duration wait[wait] 
 * showAnimation event\_id animation\_id wait[wait] 
 * tintScreen color[r,g,b,a] duration wait[wait] 
 * label label\_name
