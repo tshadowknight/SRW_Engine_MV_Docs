@@ -1480,6 +1480,15 @@ Also note that only one reticle can be shown at a time.
 
 	Removes the current location header.	
 	
+* setCustomSpirit actor\_id slot spirit\_id cost level
+
+	Overwrite the spirit in the specified slot of the specified actor with the one defined by the spirit\_id, cost and level(learned at).
+	These changes will not appear in the Pilot editor!
+	
+* clearCustomSpirit	actor\_id slot
+
+	Remove a custom spirit assignment.
+	
 ## External Plugin commands	
 
 These are plugin commands provided by external plugins.
@@ -2130,6 +2139,7 @@ The number of kills a unit must have before they qualify as an Ace.
 
 ### DEFAULT\_SP\_REGEN
 Possible values: \[number\]<br>
+
 
 
 The number of points of SP recovered at the start of a turn by default.
