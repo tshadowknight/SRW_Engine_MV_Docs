@@ -47,6 +47,7 @@ Take the latest version from the #latest-version channel on the discord server. 
 	    * out.png: Leaning back while moving
 	    * hurt.png
 	  	* dodge.png
+	  	* block.png
 	- All images used for the battle scene should be square and a power of two in width and height(32,64,128,256,512,1024,...)
 
 * Basic battle: Add a sprite for the basic battle display by adding the file to the img/basic_battle folder and selecting it in the editor by clicking the preview icon.
