@@ -244,3 +244,19 @@ Use the this.awardSRPoint(); script command to award an SR point when the condit
 * The end of every map should set the following two variables:
 	* nextMap(#11): The map id of the next map after the intermission(check the bottom bar in rpg maker when selecting a map to see the id)	
 	* lastStageId(#23): The id of the current map. Used to display the last map played on the intermission
+	
+# Quirks  
+  
+  Check this section if something seems to be working oddly.
+  
+### The camera doesn't return to the neutral position correctly    
+  
+  This issue seems to occur when using rotate command that affect the z-axis. Specifically when using a rotate\_to command to rotate to some angle that is not 0 for all axis and then followed by a rotate to some angle where x and y are not 0 but z is. 
+  
+  Ex.: rotate\_to(0.5,0.5,0.1) and then rotate\_to(0.2,0.2,0). 
+  
+  It can be circumvented by entering a small value of z for the second rotate\_to command instead of 0. 
+  
+  Ex.: rotate\_to(0.2,0.2,0.00001)
+  
+  This also applies to rotate commands. 
