@@ -245,7 +245,26 @@ Use the this.awardSRPoint(); script command to award an SR point when the condit
 	* nextMap(#11): The map id of the next map after the intermission(check the bottom bar in rpg maker when selecting a map to see the id)	
 	* lastStageId(#23): The id of the current map. Used to display the last map played on the intermission
 	
-# Quirks  
+## Abilities
+
+All your ability definition files live in the js\plugins\config\active folder of your project.
+The following files are available:
+
+* PilotAbilities.conf.js
+* MechAbilities.conf.js
+* ItemEffects.conf.js
+* AbilityCommands.conf.js
+
+These files follow a similar structure.
+
+### Adding a new ability
+
+* Open the file for the type of ability you wish to add
+* Make a copy of an ability with a similar effect and place it at the end of the file. It should  be inserted after the closing ); of the last ability and before the }; at the end of the file.
+* Give the ability a new id by changing the first number in the definition. This id should always be unique.
+* Update the name, description and ability effects and activation requirements([see the general documentation for a detailed overview of all fields](https://github.com/tshadowknight/SRW_Engine_MV_Docs/blob/main/manual.md#pilot-abilities))
+	
+## Quirks  
   
   Check this section if something seems to be working oddly.
   
