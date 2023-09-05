@@ -165,6 +165,36 @@ call transition_map()
 
 In the custom stage format instead, which will automatically do the fades for you. Only works if picture #1 was used for the backgrounds
 
+#### Unlock a mech
+
+```
+[unlockUnit: 1]
+```
+
+#### Unlock a pilot or change a pilot to subpilot
+
+```
+
+[changePartyMember: Add 2]
+//assign the new pilot to the mech
+[assignUnit: 2 1]
+
+```
+
+**Important**: The assignUnit command must be used to make the pilot behave properly in the intermission if they were previously a sub-pilot
+
+#### Unlock a subpilot or change a pilot to subpilot
+
+```
+[changePartyMember: Add 3]
+//assign the new pilot to the mech and make them a subpilot
+[assignUnit: 3 1 1]
+
+```
+
+**Important**: The setSubPilot command must be used to make the subpilots behave properly in the intermission
+
+
 #### Show the stage title and conditions
 
 * Use a formatted text box to show the stage title.

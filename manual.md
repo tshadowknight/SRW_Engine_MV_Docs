@@ -876,8 +876,9 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 * lockUnit class\_id
 	Make the mech with the specified id not available to the player.
 	
-* assignUnit actor\_id class\_id
+* assignUnit actor\_id class\_id as\_sub\_pilot
 	Assign the mech with the specified id to the pilot with the specified id.	
+	If as sub pilot is set the pilot will be marked as a sub-pilot. This is required when deploying new pilots with mechs that have deploy actions.
 
 * SetLevel actor\_id level
 
@@ -1574,6 +1575,7 @@ They can also be used as conditionals in IF statements.
 	Will be TRUE if the HP of the actor with the specified id is below or equal to the specified value.
 	<br>
 	If actor\_id is -1 the condition is TRUE if any actor on the map meets the condition.
+
 	
 * this.isEnemyBelowHP(enemy\_id, amount)
 
@@ -1730,6 +1732,7 @@ Note that this command is only safe to be called in the stage intro script!
 	Erase all events with the specified properties. Type is "", "actor" or "enemy". Omitted is a list of event ids that should not be erased, Ex.: \[5,11\].  If toAnimationQueue is true the this.processDisappearQueue script command will need to be called to erase the events.
 	
 * this.playerMoveTo(x, y)
+
 
 	Move the cursor to the specified coordinates, the cursor will move from its start position to its end position with visible motion.
 	
