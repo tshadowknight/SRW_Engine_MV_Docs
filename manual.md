@@ -1496,6 +1496,11 @@ Also note that only one reticle can be shown at a time.
 	
 	Turn the event with the specified id into an item box containing the listed items. ex.: deployItemBox 17 [21,22]
 	
+* collectItemsBoxes event\_id(optional)
+
+	Collect all item boxes currently on the map. Must be called to pick up boxes at the end of a stage.
+	If the optional event id is provided only the box with the matching id will be collected.	
+	
 	
 ## External Plugin commands	
 

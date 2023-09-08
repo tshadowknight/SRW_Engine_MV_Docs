@@ -295,7 +295,7 @@ These files follow a similar structure.
 * Update the name, description and ability effects and activation requirements([see the general documentation for a detailed overview of all fields](https://github.com/tshadowknight/SRW_Engine_MV_Docs/blob/main/manual.md#pilot-abilities))
 
 
-### Using item boxes
+### Using item boxes 
 
 #### Setting the item box map sprite
 
@@ -318,6 +318,10 @@ To make enemies that run away drop item boxes you must use the deployItemBox plu
 
 Any non-friendly unit that lands on a tile with an item box will remove that item box and its contents can no longer be retrieved.
 By setting the targetBox parameter in an addEnemy(FromObj) script command that enemy will prioritize picking up the item box with the specified event id over all else. It will return to regular AI behavior when the box is removed from the map.
+
+#### Collect unclaimed boxes at the end of a stage
+
+Use the collectItemsBoxes plugin command.
 	
 ## Quirks  
   
