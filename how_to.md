@@ -293,6 +293,31 @@ These files follow a similar structure.
 * Make a copy of an ability with a similar effect and place it at the end of the file. It should  be inserted after the closing ); of the last ability and before the }; at the end of the file.
 * Give the ability a new id by changing the first number in the definition. This id should always be unique.
 * Update the name, description and ability effects and activation requirements([see the general documentation for a detailed overview of all fields](https://github.com/tshadowknight/SRW_Engine_MV_Docs/blob/main/manual.md#pilot-abilities))
+
+
+### Using item boxes
+
+#### Setting the item box map sprite
+
+Set the ITEM\_BOX\_SPRITE values in Engine.conf to the desired character sheet and index.
+
+#### Fixed item boxes
+
+To add a fixed itembox use the deployItemBox plugin command.
+
+ex.: `deployItemBox 17 [21,22]`=> turn event 17 into an item box containing items 21 and 22.
+
+#### Item boxes dropped by enemies
+
+Use the boxDrop parameter in the addEnemy(FromObj) script command.
+ex.: `boxDrop: [21,22]` => the enemy will drop a box containing items 21 and 22 on death.
+
+To make enemies that run away drop item boxes you must use the deployItemBox plugin command manually in the script that handles the enemy running away.
+
+#### Make enemies steal item boxes
+
+Any non-friendly unit that lands on a tile with an item box will remove that item box and its contents can no longer be retrieved.
+By setting the targetBox parameter in an addEnemy(FromObj) script command that enemy will prioritize picking up the item box with the specified event id over all else. It will return to regular AI behavior when the box is removed from the map.
 	
 ## Quirks  
   

@@ -878,7 +878,7 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 	
 * assignUnit actor\_id class\_id as\_sub\_pilot
 	Assign the mech with the specified id to the pilot with the specified id.	
-	If
+	If as sub pilot is set the pilot will be marked as a sub-pilot. This is required when deploying new pilots with mechs that have deploy actions.
 
 * SetLevel actor\_id level
 
@@ -1489,6 +1489,13 @@ Also note that only one reticle can be shown at a time.
 * clearCustomSpirit	actor\_id slot
 
 	Remove a custom spirit assignment.
+
+* awardFavPoints amount
+
+* deployItemBox event\_id item\_list
+	
+	Turn the event with the specified id into an item box containing the listed items. ex.: deployItemBox 17 [21,22]
+	
 	
 ## External Plugin commands	
 
@@ -1627,7 +1634,7 @@ If update\_count is true the unit will still count as defeated, this should be u
 	To be used in the before_destruction event.<br>
 	This can be used for bosses that run away when destroyed etc.
 
-* this.addEnemy(toAnimQueue, eventId, enemyId, mechClass, level, mode, targetId, items, squadId, targetRegion, factionId, counterBehavior, attackBehavior)
+* this.addEnemy(toAnimQueue, eventId, enemyId, mechClass, level, mode, targetId, items, squadId, targetRegion, factionId, counterBehavior, attackBehavior, noUpdateCount, attribute1, attribute2, boxDrop, targetBox)
 
 	Spawn an enemy on the map, the event that will be used must already exist.<br>
 	The following can be set:<br>
@@ -1651,6 +1658,12 @@ If update\_count is true the unit will still count as defeated, this should be u
 	* factionId: the id of the faction the unit will be assigned to. Factions 0, 1 and 2 are available with faction 0 being the default enemy faction. If omitted units will be assigned to faction 0.	
 	* counterBehavior: Determines how an enemy will react to being attack. Possible values are: "attack", "defend", "evade", "defend\_low", "evade\_low" and "survive". defend\_low and evade\_low will cause the unit to perform the defined action when at or below 25% HP, otherwise they will counter attack. If no value is set the unit will default to counter attacking. survive causes the unit to defend and evade as appropriate to stay alive as long as possible. 
 	* attackBehavior: If set to "none" the unit will never initiate an attack on their turn.
+	* noUpdateCount: If true the total enemy count will not be updated for this additional enemy.
+	* attribute1: Force the primary attribute of the enemy to be the provided value
+	* attribute2: Force the secondary attribute of the enemy to be the provided value
+	* boxDrop: List of item ids. If provided the enemy will drop containing the listed items.
+	* targetBox: The event id of a drop box. If set the enemy will prefer picking up the box over all other actions.
+
 
 A setting can be left blank by entering "" as its value.	 
 
