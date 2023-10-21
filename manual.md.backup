@@ -918,6 +918,14 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 
 * removeItemFromHolder mech\_id slot
 
+* addEquipable weapon\_id
+	Add one instance of the weapon with the specified id as an equipable to the player's inventory.
+
+* addEquipableToHolder weapon\_id mech\_id slot
+	Equip a weapon with the specified it to the specified mech in the specified slot. Note that the weapon must be available in the inventory.
+	
+* removeEquipableFromHolder	
+
 * setFreeEventCam
 
 	Sets the event cam to free mode until clearFreeEventCam is called. In free mode focusEvent and focusActor commands will not center the camera on the target unit.<br>
