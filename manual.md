@@ -2372,6 +2372,13 @@ The displayed number is separate from the map id because a game might have multi
 
 [Link](battle_scene_editor.md)
 
+## External Plugins Supported
+
+### UltraMode7
+The engine has been made compatible with the UltraMode7 plugin. 
+
+For more information on how to use this plugin please refer to the comments in the plugin file(plugins/UltraMode7.js).
+
 ## Concept Examples
 
 ### Stage Flow
