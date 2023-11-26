@@ -269,6 +269,9 @@ Play an animation and pause it, from there you can use mouse and keyboard contro
 
 Once a good position and angle has been set you can copy them to translate, teleport, rotate and rotate\_to commands by clicking the "Copy from Helper" button.
 
+### Using the helper widget
+The helper widget in the top left corner of the attack editor allows you to inspect the current position and rotation of named object in the scene. To use it pause an attack animation and type in the name(target) of an object the animation has created or Camera, active\_main or active\_target to get those default objects. You can then inspect and modify their position and rotation in the helper. You can also copy the values of the current active object in the helper to position and rotations in animation commands using the "Copy from Helper" buttons.
+
 ### Creating motion
 To create animations where units move around the scene a lot it is most practical to keep the movement of the actual units to a minimum and to instead move the background to imply movement. This can be done with the bg\_scroll\_ratio command.
 So instead of moving a unit accross a great distance, keep the unit in place and set a high scroll speed for the background.
