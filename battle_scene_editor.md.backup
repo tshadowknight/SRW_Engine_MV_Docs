@@ -252,7 +252,7 @@ For more information on the Animation Commands and their parameters please refer
 ## Basic how to
 
 ### Basic animation creation flow
-This only an example workflow:  
+This is only an example workflow:  
   
 * 1) Create the animation for the attack for when it hits in the "Main"sequence
 * 2) Create the alterations to the animation for when it destroys the target in the "Destroy" and "Destroy Overwrite" sequences as needed
@@ -291,4 +291,4 @@ To have a working destroy sequence a "destroy" command must be used to play the 
 * Create a dark fade using a create\_bg command(default asset available in general/fade\_black) and a fade it in with a fade\_in\_bg to about 0.6 command to darken the scene 
 * Reset the camera position and background scrolls to default in the cleanUpCommands of a next\_phase command so the support defender swap in happens cleanly.
 * Remove any fades in the cleanUpCommands of a next\_phase command and reapply them before impact for a more dynamic animation.
-* Use animating fades to fake lighting(ex. a glow coming of an energy blast) for
+* Use animating fades to fake lighting(ex. a glow coming of an energy blast) for a more dynamic animation.

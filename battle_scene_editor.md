@@ -252,7 +252,7 @@ For more information on the Animation Commands and their parameters please refer
 ## Basic how to
 
 ### Basic animation creation flow
-This only an example workflow:  
+This is only an example workflow:  
   
 * 1) Create the animation for the attack for when it hits in the "Main"sequence
 * 2) Create the alterations to the animation for when it destroys the target in the "Destroy" and "Destroy Overwrite" sequences as needed
