@@ -249,3 +249,46 @@ Each Animation Command can have the following attributes:
 **You can hover over the "Command" text or the name of a Parameter to see a tooltip with more information.**<br>
 For more information on the Animation Commands and their parameters please refer to the [Animation Command list.](battle_animation_commands.md)
 
+## Basic how to
+
+### Basic animation creation flow
+This only an example workflow:  
+  
+* 1) Create the animation for the attack for when it hits in the "Main"sequence
+* 2) Create the alterations to the animation for when it destroys the target in the "Destroy" and "Destroy Overwrite" sequences as needed
+* 3) From the main animation list, send all animaiton commands that only apply when the attack hits to the "Hit" sequence using the "Send to..." control for each animation block.
+* 4) Make a "Miss" sequence for the attack.
+
+### Choosing a camera postion and angle
+The recommended approach to setting a camera postion and angle is to use the camera controls in the preview window.
+Play an animation and pause it, from there you can use mouse and keyboard controls in the preview window to move the camera:  
+
+* Drag: Change the camera view angle.
+* Arrow Keys: Move the camera on the z plane
+* Page up/down: Move the camera up or down
+
+Once a good position and angle has been set you can copy them to translate, teleport, rotate and rotate\_to commands by clicking the "Copy from Helper" button.
+
+### Creating motion
+To create animations where units move around the scene a lot it is most practical to keep the movement of the actual units to a minimum and to instead move the background to imply movement. This can be done with the bg\_scroll\_ratio command.
+So instead of moving a unit accross a great distance, keep the unit in place and set a high scroll speed for the background.
+
+### Using the transition commands
+#### next\_phase
+The next\_phase animation command must be used when transitioning between the windup and impact of an animations. Simple example: Unit first rocket -> next\_phase -> target is hit by rocket.
+The next\_phase commands takes care of switching in support defenders automatically.
+
+#### reset\_position
+The reset\_position command must be used at the end of animation if the target moved from its default position. It will return the target and camera to their default positions so the next animation(counter attack) can start from a neutral state. By default it will also show the damage number and damage text for the target but these can be switched off.
+
+### Making a working destroy sequence
+To have a working destroy sequence a "destroy" command must be used to play the destruction animation of the unit at the end of attack animation. If you have a dynamic kill where the target unit isn't seen after the animation this is not needed.
+
+### Small things to not forget or that add to the animations
+
+* Use the drain\_en\_bar command to show the used EN
+* Use the drain\_hp\_bar command to animate the HP being drained
+* Create a dark fade using a create\_bg command(default asset available in general/fade\_black) and a fade it in with a fade\_in\_bg to about 0.6 command to darken the scene 
+* Reset the camera position and background scrolls to default in the cleanUpCommands of a next\_phase command so the support defender swap in happens cleanly.
+* Remove any fades in the cleanUpCommands of a next\_phase command and reapply them before impact for a more dynamic animation.
+* Use animating fades to fake lighting(ex. a glow coming of an energy blast) for a more dynamic animation.
