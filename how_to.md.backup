@@ -45,7 +45,7 @@ Take the latest version from the #latest-version channel on the discord server. 
 
 * Mugshot: The mugshot for the pilot uses a standard RPG Maker portrait. Add a new 8x2 sheet in the img/faces folder to add new portraits for your pilots. 
 
-### Adding a mech
+## Adding a mech
 
 * Launch a playtest of the game and on the title screen hit F11, this will open the in-game unit editor
 * Select "Mechs" in the top right.
@@ -66,6 +66,48 @@ Take the latest version from the #latest-version channel on the discord server. 
 * Basic battle: Add a sprite for the basic battle display by adding the file to the img/basic_battle folder and selecting it in the editor by clicking the preview icon.
 * Overworld/map sprite: Add the map sprite for the unit by adding a new sheet in img/characters and by filling it in with 48x48 sprites for the unit in RPG Maker character format. If you intend to only use a face sprite, the single sprite should be pasted for all movement directions(3x4). Select the added sprite in the editor by clicking the Overworld preview.
 * Menu: (Optional) add a menu sprite for the mech by adding an image in the img/menu folder and selecting it in the editor by clicking the preview in the General Info section. Note that if no menu sprite is selected the main.png from the Battle scene sprites will be used instead. The Editor will note this by adding "Using fallback!" under the preview
+
+### Transforming a Mech
+
+
+#### On the unit that transforms
+
+On the mech that transforms go to the Transformation section.
+
+* Set a command name[optional], this determines how to the transformation command appears in the unit menu
+* Add an entry to the available transformation list. If a unit can turn into multiple other units add one entry for each.
+* Set Restores HP or EN as needed. If enabled the unit will restore the selected resource when it does any of its Transformations
+
+#### On the transformation target
+Nothing needs to be done for the transformation target unless there are subpilots or pilot changes involved.
+If that is the case on the transformation target mech go to the Deployment section.
+
+##### Basic
+If only the subpilots of your unit change you can use the Basic configuration.
+* Enable Force Pilots
+* Add the required Sub pilot slots and set them to the correct pilots.
+
+
+##### Advanced
+If a transformation involves a main pilot change you will need to use an Advanced configuration. This involves setting Deploy Actions for the unit. The Deploy Actions will specify which pilot needs to be put where when a unit is deployed. Using Getter 1 as an example, when it is deployed Ryoma needs to be set to main pilot, and Hayato and Benkei need to be set as sub pilots.
+
+* Click the Edit button for Deploy Actions to get started
+* Click the Add Pilot button in the Deploy Actions editor, leave it at Any
+* Click the Add Mech button and select the current unit(the transformation target)
+* To manage the Main Pilot click Add Target:
+	- Leave type on Direct
+	- Set type to main
+	- Choose the pilot to assign as the main pilot after Transformation
+* To manage a Sub Pilot click Add Target:
+	- Leave type on Direct
+	- Set type to sub
+	- Set slot to the sub pilot slot the pilot should go into, slots start at 0!
+	- Choose the pilot to assign to this sub pilot slot after Transformation
+* Add additional Targets to assign more sub pilots
+
+#### Notes
+* A unit can be both a unit that transforms and a transformation target.
+
 
 ## Adding a weapon
 * Launch a playtest of the game and on the title screen hit F11, this will open the in-game unit editor
@@ -281,7 +323,7 @@ Use the this.awardSRPoint(); script command to award an SR point when the condit
 ## Set the starting map of the game
 * Open the map named Init in the project
 * Edit the top left event and scroll to the bottom
-* Change the 'Transfer Player' command to transfer the player to the specified map whens starting a new game
+* Change the 'Transfer Player' command to transfer the player to the specified map when starting a new game
 
 ## Progressing the player to the next map
 * The end of every map should set the following two variables:
@@ -306,6 +348,8 @@ These files follow a similar structure.
 * Make a copy of an ability with a similar effect and place it at the end of the file. It should  be inserted after the closing ); of the last ability and before the }; at the end of the file.
 * Give the ability a new id by changing the first number in the definition. This id should always be unique.
 * Update the name, description and ability effects and activation requirements([see the general documentation for a detailed overview of all fields](https://github.com/tshadowknight/SRW_Engine_MV_Docs/blob/main/manual.md#pilot-abilities))
+
+
 
 
 ### Using item boxes 
