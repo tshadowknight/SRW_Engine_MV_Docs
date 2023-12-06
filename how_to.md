@@ -14,6 +14,19 @@ Go to the js\plugins\config folder of the project and make a copy of the default
 The active folder should now contain a copy of all the default config files. Any changes you make for your project should be done
 in the active folder.
 
+#### Linux  
+Modern Linux distros do not support the version of NWJS that ships with RPG Maker MV by default, which causes playtests to not work.
+To circumvent this you can install the latest version of NWJS instead.
+
+* Close RPG Maker MV
+* Download the latest SDK and normal version of NWJS from https://nwjs.io/
+* Go to the local files for RPG Maker MV(Steam menu > Right click RPG Maker MV > Manage > Browse Local Files)
+* Overwrite the content of nwjs-lnx with the normal NWJS files
+* Overwrite the content of nwjs-lnx-test with the SDK NWJS files
+* Open RPG Maker MV
+
+**Warning**: If RPG Maker MV updates you will need to repeat this process.
+
 ### Staying up to date
 
 
@@ -273,6 +286,7 @@ Use the this.awardSRPoint(); script command to award an SR point when the condit
 
 ![](img/EditCMD.png)
 * Change the 'Transfer Player' command to transfer the player to the specified map whens starting a new game
+
 
 ![](img/Transferplayer.png)
 
