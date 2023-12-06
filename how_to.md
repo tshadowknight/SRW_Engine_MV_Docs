@@ -322,10 +322,18 @@ Use the this.awardSRPoint(); script command to award an SR point when the condit
 
 
 ## Set the starting map of the game
-* Open the map named Init in the project
-* Edit the top left event and scroll to the bottom
-* Change the 'Transfer Player' command to transfer the player to the specified map when starting a new game
+* Open the init map of the project
 
+![](img/Initmenu.png)
+* Edit the top left event and scroll to the bottom
+
+![](img/EditCMD.png)
+* Change the 'Transfer Player' command to transfer the player to the specified map whens starting a new game
+
+
+![](img/Transferplayer.png)
+
+![](img/EditEventLayout.png)
 ## Progressing the player to the next map
 * The end of every map should set the following two variables:
 	* nextMap(#11): The map id of the next map after the intermission(check the bottom bar in rpg maker when selecting a map to see the id)	
