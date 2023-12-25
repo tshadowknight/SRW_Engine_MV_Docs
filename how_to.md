@@ -14,6 +14,17 @@ Go to the js\plugins\config folder of the project and make a copy of the default
 The active folder should now contain a copy of all the default config files. Any changes you make for your project should be done
 in the active folder.
 
+#### Updating the nwjs version  
+  
+* Make sure RPG Maker MV is closed  
+* Download latest\_tested\_NW.zip
+* Navigate to RPG Maker MV's Steam files:  
+	- Open Steam
+	- Right click RPG Maker MV  
+	- Properties > Installed Files > Browse
+* Extract the contents of the zip file into RPG Maker MV's Steam files, overwriting all
+* Start RPG Maker MV
+
 #### Linux  
 Modern Linux distros do not support the version of NWJS that ships with RPG Maker MV by default, which causes playtests to not work.
 To circumvent this you can install the latest version of NWJS instead.
@@ -325,9 +336,11 @@ Use the this.awardSRPoint(); script command to award an SR point when the condit
 * Open the init map of the project
 
 ![](img/Initmenu.png)
+
 * Edit the top left event and scroll to the bottom
 
 ![](img/EditCMD.png)
+
 * Change the 'Transfer Player' command to transfer the player to the specified map whens starting a new game
 
 
