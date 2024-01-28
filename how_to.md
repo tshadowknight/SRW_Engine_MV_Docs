@@ -14,6 +14,8 @@ Go to the js\plugins\config folder of the project and make a copy of the default
 The active folder should now contain a copy of all the default config files. Any changes you make for your project should be done
 in the active folder.
 
+Next follow the steps in the next section on Updating the nwjs version. SRW Engine MV requires a more recent version of nwjs than is included with RPG Maker MV by default.
+
 #### Updating the nwjs version  
   
 * Make sure RPG Maker MV is closed  
@@ -370,6 +372,7 @@ These files follow a similar structure.
 * Make a copy of an ability with a similar effect and place it at the end of the file. It should  be inserted after the closing ); of the last ability and before the }; at the end of the file.
 * Give the ability a new id by changing the first number in the definition. This id should always be unique.
 * Update the name, description and ability effects and activation requirements([see the general documentation for a detailed overview of all fields](https://github.com/tshadowknight/SRW_Engine_MV_Docs/blob/main/manual.md#pilot-abilities))
+
 
 
 
