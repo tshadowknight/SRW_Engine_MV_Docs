@@ -374,7 +374,22 @@ These files follow a similar structure.
 * Update the name, description and ability effects and activation requirements([see the general documentation for a detailed overview of all fields](https://github.com/tshadowknight/SRW_Engine_MV_Docs/blob/main/manual.md#pilot-abilities))
 
 
+## Parallax Mapping
 
+SRW Engine MV has an additional feature to make parallax mapping easier.   
+enable PLACE\_PARALLAX\_ABOVE_MAP in Engine.conf.js to make it so the Parallax layer will display above the regular map. This allows you to use regular tiles for tile properties like movement cost and terrain bonuses without having to worry about those tiles appearing in game.
+
+
+To do parallax mapping perform the following steps:  
+  
+* create your map in an external program, make sure to keep the tile size of the engine in mind(default 48x48)
+* store the map in img/parallaxes folder of the project, make sure to make it start with "!" ex.: !myParallaxMap.png
+* in RPG Maker create a new map and in the edit map dialogue set the parrallax image to the map image, do not enable looping. Enable "Show in the Editor"
+* make sure the size in tiles of the map matches the size of the parallax image ex.: the map is 768x768 which is 16 48x48 tiles, so the map width and height should be 16
+* use the region editor of the map to assing terrain types
+* place regular tiles on the map for functions like terrain movement cost and terrain bonuses
+
+The map should now be ready for use.
 
 
 ### Using item boxes 
