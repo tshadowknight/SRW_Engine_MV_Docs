@@ -391,6 +391,43 @@ To do parallax mapping perform the following steps:
 
 The map should now be ready for use.
 
+### Using Attack Text Groups  
+  
+It is possible to have multiple sets of lines for attack text by assigning lines to groups.
+To get multiple different options at least one line should be assigned to a group that is not group 0. Group 0 is the default group and used when no group is assigned. This line should also have the same quote id for all its options. So if your attack animation has a set\_attack\_text command with quote id 4 all lines with that quote id can appear on any given run of the animation. The group will be kept consistent within the same animation. So if group 1 is picked only lines from that group or lines with group 0 will be used for that particular run of the animation.
+
+Example:
+
+These are the lines defined for the attack. The attack will show both in succession by using set\_attack\_text 0 and then set\_attack\_text 1.
+
+
+* Line 1  
+Quote Id: 0
+Group: 0    
+Text: "Yeah! Let's do this!"
+
+* Line 2  
+Quote Id: 1 
+Group: 0  
+Text: "This one is going to hurt!"
+
+* Line 3  
+Quote Id: 1 Group 2  
+Text: "You won't know what hit you!" 
+
+On a run of the animation where group 0 is picked the dialogue will be:
+
+* "Yeah! Let's do this!"
+* "This one is going to hurt!"
+
+On a run of the animation where group 1 is picked the dialogue will be:
+
+* "Yeah! Let's do this!"
+* "You won't know what hit you!" 
+
+#### Setting group appearance weights  
+  
+For each attack you can set the appearance weight of each group in the set of lines. Add aline to the list and specify the group id and then a numerical weight. A group has a weight of 1 by default. If all groups have weight 1 each group is equally likely to be picked. If one group has weight 1 and the other weight 5 the latter is 5 times more likely to be picked.
 
 ### Using item boxes 
 
