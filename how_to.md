@@ -19,7 +19,7 @@ Next follow the steps in the next section on Updating the nwjs version. SRW Engi
 #### Updating the nwjs version  
   
 * Make sure RPG Maker MV is closed  
-* Download latest\_tested\_NW.zip
+* Download latest\_tested\_NW.zip from the #latest-version channel
 * Navigate to RPG Maker MV's Steam files:  
 	- Open Steam
 	- Right click RPG Maker MV  
