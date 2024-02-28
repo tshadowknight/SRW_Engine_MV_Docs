@@ -1581,13 +1581,16 @@ They can also be used as conditionals in IF statements.
 	Will be TRUE if the enemy with the specified id was defeated and is about to be destroyed.
 	
 * this.isEventDestructionQueued(event\_id)
-
-
-
-
 	To be used as a conditional in the before_destruction event.<br>
 	Will be TRUE if the event with the specified id was defeated and is about to be destroyed.	
 
+* this.getPendingDestructionCount(type, oFfActionId, byFactionId)
+	To be used in the before_destruction event.<br>
+	Returns the number of enemies that will be destroyed of the given type(actor|enemy) with the provided ofFactionId(0|1|2|player) and by the provided byFactionId(0|1|2|player). All parameters can be left as null to match any.   
+	
+	This function can be used to count how many enemies the player has destroyed of a specific faction.
+	  
+	  Warning: This function will only return the count for the first invocation after a map attack, 0 for subsequent ones for the same battle. This is to avoid double counting the value when handling a map attack.
 	
 * this.isActorBelowHP(actor\_id, amount)
 
