@@ -1862,9 +1862,10 @@ Note that this command is only safe to be called in the stage intro script!
 
 	Can be used as conditional to check if the event with the specified id was hit by the specified weapon during the last battle. If include\_support is true support attacks will also be checked.	
 	
-* this.isActorInBattle(actor\_id)
+* this.isActorInBattle(actor\_id, include\_sub\_pilots)
 
 	Can be used as a conditional to check if the actor with the specified id is taking part in a battle. This function must be used instead of the game variable for proper results when using the twin system!
+	If include\_sub\_pilots is set to true this function will also check the subpilots of the current battle actor.
 	
 * this.isEnemyInBattle(enemy\_id)
 
@@ -1886,6 +1887,7 @@ function\_id refers to the value of the function tag.<br>
 * this.getActorWill(actor\_id)
 
 	Can be used in a conditional to check the current will of the actor unit with the specified id.
+
 
 * this.distanceBetweenEvents(event\_id\_1, event\_id\_2)
 

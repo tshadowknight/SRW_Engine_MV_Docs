@@ -155,7 +155,11 @@ The controls in VN scenes are:
 * Z/Cross + Page down/R1 + Page up/L1: Skip to the next key event
 * Enter: Show the text log
 	  
-# 	  
+# Soft Reset
+
+Immediately load the most recent save file.
+
+* Z/Cross + X/Circle + Page up/L1 + Page down/R1
 	  
 # Menus
 ## Controls
