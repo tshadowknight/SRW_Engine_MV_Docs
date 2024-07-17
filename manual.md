@@ -1687,17 +1687,18 @@ If update\_count is true the unit will still count as defeated, this should be u
 	* boxDrop: List of item ids. If provided the enemy will drop containing the listed items.
 	* targetBox: The event id of a drop box. If set the enemy will prefer picking up the box over all other actions, as long as the box is not collected.
 	* AIFlags: Specify the AIFlags with an object like :  	
-	
-```
+	```
 		{
-			terrain: args[1] * 1,  //if 1 the unit will prefer to move onto tile that grant terrain bonuses
-			formation: args[2] * 1,//if 1 the unit will prefer to move adjacent to allies that provide support attack/defend
-			reposition: args[3] * 1,//if 1 the unit will move closer to hit enemies with stronger attacks even if they already can hit a target with a longer range attack
-			preferTarget: args[4] * 1//if 1 the unit will move towards its target region(if it has one) even it has attack targets already in range
-		}  
+			terrain: 0,  //if 1 the unit will prefer to move onto tile that grant terrain bonuses
+			formation: 0,//if 1 the unit will prefer to move adjacent to allies that provide support attack/defend
+			reposition: 0,//if 1 the unit will move closer to hit enemies with stronger attacks even if they already can hit a target with a longer range attack
+			preferTarget:1//if 1 the unit will move towards its target region(if it has one) even it has attack targets already in range
+		  }  
 ```
-*	kills: the score of the enemy
-*	lockedDropSlots: An array with the parts slot numbers that should be locked for drops(starts at 0). Ex: [0,2], lock slot 1 and 3 of the units parts so they will not drop when defeated.
+	
+
+	*	kills: the score of the enemy
+	*	lockedDropSlots: An array with the parts slot numbers that should be locked for drops(starts at 0). Ex: [0,2], lock slot 1 and 3 of the units parts so they will not drop when defeated.
  
 
 
