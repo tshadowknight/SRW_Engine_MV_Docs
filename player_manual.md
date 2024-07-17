@@ -2,8 +2,8 @@
 
 ## Game pad support
 * XBOX360 controller 
-* DS4 with DS4Windows, 'Hide DS4 Controller' must be enabled! 
-* DS5 with DS4Windows, 'Hide DS4 Controller' must be enabled!
+* DS4 with Steam input
+* DS5 with Steam input
 
 
 # Game play
