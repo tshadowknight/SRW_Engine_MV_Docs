@@ -1250,9 +1250,10 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 
 	Set the weapon with the specified id as locked for the mech/class with the specified id.
 	
-* setUnlockedUpgradeLevel level
+* setUnlockedUpgradeLevel level only\_upgrade
 
 	Sets the allowed max level of upgrades to the specified level. Does not remove upgrades that go above the newly specified level.
+	If only\_upgrade is 1 the level is not set if it is lower than the current setting.
 	
 * setRequiredFUBLevel level
 
@@ -1467,6 +1468,10 @@ Also note that only one reticle can be shown at a time.
 * addSubPilot mech\_id  slot actor\_id
 
 	Sets the specified actor as a subpilot for the specified mech in the specified slot(starts at 0).
+
+* removeSubPilot mech\_id  slot actor\_id
+
+	Clears the specified slot(starts at 0) for the specified mech. The specified actor has tis isSubPilot status cleared.
 	
 * setPortraitOverlay id
 
@@ -1652,7 +1657,7 @@ If update\_count is true the unit will still count as defeated, this should be u
 	To be used in the before_destruction event.<br>
 	This can be used for bosses that run away when destroyed etc.
 
-* this.addEnemy(toAnimQueue, eventId, enemyId, mechClass, level, mode, targetId, items, squadId, targetRegion, factionId, counterBehavior, attackBehavior, noUpdateCount, attribute1, attribute2, boxDrop, targetBox)
+* this.addEnemy(toAnimQueue, eventId, enemyId, mechClass, level, mode, targetId, items, squadId, targetRegion, factionId, counterBehavior, attackBehavior, noUpdateCount, attribute1, attribute2, boxDrop, targetBox, AIFlags, kills, lockedDropSlots)
 
 	Spawn an enemy on the map, the event that will be used must already exist.<br>
 	The following can be set:<br>
@@ -1681,6 +1686,19 @@ If update\_count is true the unit will still count as defeated, this should be u
 	* attribute2: Force the secondary attribute of the enemy to be the provided value
 	* boxDrop: List of item ids. If provided the enemy will drop containing the listed items.
 	* targetBox: The event id of a drop box. If set the enemy will prefer picking up the box over all other actions, as long as the box is not collected.
+	* AIFlags: Specify the AIFlags with an object like :  	
+	
+```
+		{
+			terrain: args[1] * 1,  //if 1 the unit will prefer to move onto tile that grant terrain bonuses
+			formation: args[2] * 1,//if 1 the unit will prefer to move adjacent to allies that provide support attack/defend
+			reposition: args[3] * 1,//if 1 the unit will move closer to hit enemies with stronger attacks even if they already can hit a target with a longer range attack
+			preferTarget: args[4] * 1//if 1 the unit will move towards its target region(if it has one) even it has attack targets already in range
+		}  
+```
+*	kills: the score of the enemy
+*	lockedDropSlots: An array with the parts slot numbers that should be locked for drops(starts at 0). Ex: [0,2]
+ 
 
 
 A setting can be left blank by entering "" as its value.	 
@@ -1865,7 +1883,7 @@ Note that this command is only safe to be called in the stage intro script!
 * this.isActorInBattle(actor\_id, include\_sub\_pilots)
 
 	Can be used as a conditional to check if the actor with the specified id is taking part in a battle. This function must be used instead of the game variable for proper results when using the twin system!
-	If include\_sub\_pilots is set to true this function will also return true 
+	If include\_sub\_pilots is set to true this function will also check the subpilots of the current battle actor.
 	
 * this.isEnemyInBattle(enemy\_id)
 
@@ -1932,6 +1950,7 @@ function\_id refers to the value of the function tag.<br>
 	Play an event battle scene according to the provided config. See the following example config for more information. You can also copy paste this example command and modify it. Note that the default RPG Maker script command box does not allow this many lines and you will need to put lines together to make it work. The custom scripting format does not have this limitation.
 	
 	```
+
 		this.playBattleScene({
 			eventId: 0, // if included the matching event text will be used for the scene(see BattleText.conf.js).
 			enemyFirst: 0, // if 0 the actor will move first, if 1 the enemy will move first. This also affects the supports. If 0, the actor support will be attacking otherwise defending. If 1, the enemy support will be attacking otherwise defending.
@@ -2154,6 +2173,7 @@ NORMAL applies to regular mech stats(HP, EN, Armor, Mobility, Accuracy) and WEAP
 \<mechUpgradeArmorCost\><br>
 \<mechUpgradeMobilityCost\><br>
 \<mechUpgradeAccuracyCost\><br>
+
 
 ### WEAPON\_UPGRADE\_TYPES
 Possible values: \[object\]<br>
