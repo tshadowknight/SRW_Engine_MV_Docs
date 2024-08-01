@@ -135,6 +135,20 @@ An object can be attached to a model's attachment by setting a parent for the ob
 
 An attachment can be revealed or hidden using the ""show\_attachment" and ""hide\_attachment" animation commands.
 
+#### Animated textures
+
+A model can have a part of its mesh animated using the flipbook mechanism in Blockbench. To enable this animation in engine additional info must be provided and the model must be set up correctly:
+
+* The animated part must have its own texture, which will act as an animation sheet
+* The animated part must have parent group with a name that encodes information about the animation: anim\_\<frame size\>\_\<rows\>\_\<columns\>\_delay(milliseconds) Ex.: anim\_64\_5\_1\_400
+	- anim_: A prefix indicating this node name has animation information
+	- frame size: the size of an individual frame of animation, must be a power of 2. Only square frames are supported.
+	- rows: The number of rows in the animation sheet
+	- columns: The number of columns in the animation sheet
+	- delay: How long each frame of the animation is displayed(in milliseconds)
+	
+
+
 ### Effekseer Support
 
 The Battle Scene supports displaying particle systems created using the freely available Effekseer(effekseer.github.io/en/) program, though with an important limitation: For technical reasons Effekseer particles systems can only be rendered on top of the rest of the Battle Scene. This means it is impossible to have an effekseer particle system behind any other element of the Battle Scene.
