@@ -151,11 +151,40 @@ A model can have a part of its mesh animated using the flipbook mechanism in Blo
 
 ### Effekseer Support
 
-The Battle Scene supports displaying particle systems created using the freely available Effekseer(effekseer.github.io/en/) program, though with an important limitation: For technical reasons Effekseer particles systems can only be rendered on top of the rest of the Battle Scene. This means it is impossible to have an effekseer particle system behind any other element of the Battle Scene.
+The Battle Scene supports displaying particle systems created using the freely available Effekseer(effekseer.github.io/en/) program.
 
-To use an Effekseer particle system simply export the particle system to the .efk format and put it in the effekseer folder of the project and put the required textures in the effekseer/Texture folder. Note that you will need to ensure that the Effekseer project refers to the texture with the correct path, so while making the particle system keep the textures you use in a Texture folder in the same folder as the project file!
+To use an Effekseer particle system export the particle system to the .efk format and put it in the effekseer folder of the project and put the required textures in the effekseer/Texture folder. Note that you will need to ensure that the Effekseer project refers to the texture with the correct path, so while making the particle system keep the textures you use in a Texture folder in the same folder as the project file. Your project folder should look like this:
+
+* effekseer project:
+	* effect sub folder
+ 		* project file.efkc
+ 	* Texture
+  		* texture.png 	
+
+You can copy the content of this folder into the effekseer folder of your RPG Maker project to use the effects.
 
 Once the files are in the right place the particle system can be displayed in the Battle Scene with the play_effekseer Animation Command.
+It has the following settings:
+* path: The location of the .efk file in the effekseer folder
+* position:
+* scale: 
+* speed: 1 is regular playback, supports decimal values
+* rotation:
+* parent: a target name that can be used to attach the effect to. Use something like active\_main:point\_eye to attach an effect to a part of a model
+* isForeground: if true the effect will render as render group 3, so on top of everything in the default scene.
+* autoRotate: if true the effect will be flipped on the x-axis when played for the enemy side
+* flipZ: if true the z direction will be flipped, may be required to line up the rotation with what is seen in the effekseer editor
+* ignoreParentRotation: if true the rotation of the parent(if set) is not applied
+
+Additional effekseer commands are:
+
+* hide_effekseer: hides the target effect(this is permanent)
+* remove_effekseer_parent: removes the parent from the target effect
+* set_effekseer_color: set the global color/tint for the effect
+* stop_effekseer_root: stops the root of the effekseer effect, this will stop child nodes from spawning and let the effect fade out
+* send_effekseer_trigger: send a trigger (0-3) to the target effect. This will trigger spawn/stop/destroy triggers set in the efffect.
+* set_effekseer_frame: update the target effect to the specified frame.
+* set_effekseer_attract_point: set the global attraction point for the effekseer context of the target effect.
 
 ### Sequences
 
