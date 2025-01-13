@@ -153,6 +153,7 @@ A model can have a part of its mesh animated using the flipbook mechanism in Blo
 
 The Battle Scene supports displaying particle systems created using the freely available Effekseer(effekseer.github.io/en/) program.
 
+#### Files
 To use an Effekseer particle system export the particle system to the .efk format and put it in the effekseer folder of the project and put the required textures in the effekseer/Texture folder. Note that you will need to ensure that the Effekseer project refers to the texture with the correct path, so while making the particle system keep the textures you use in a Texture folder in the same folder as the project file. Your project folder should look like this:
 
 * effekseer project:
@@ -162,7 +163,9 @@ To use an Effekseer particle system export the particle system to the .efk forma
   		* texture.png 	
 
 You can copy the content of this folder into the effekseer folder of your RPG Maker project to use the effects.
+**Note**: When making a new effect make sure to save it before editing so that it correctly uses relative paths for its textures!
 
+#### Commands
 Once the files are in the right place the particle system can be displayed in the Battle Scene with the play_effekseer Animation Command.
 It has the following settings:
 * path: The location of the .efk file in the effekseer folder
@@ -185,6 +188,12 @@ Additional effekseer commands are:
 * send_effekseer_trigger: send a trigger (0-3) to the target effect. This will trigger spawn/stop/destroy triggers set in the efffect.
 * set_effekseer_frame: update the target effect to the specified frame.
 * set_effekseer_attract_point: set the global attraction point for the effekseer context of the target effect.
+
+#### Tips and tricks
+
+* Fixing the seed: Set the seed to a value other than -1 in the global settings to make the effect consistent every time it is played
+* Making a particle that goes on top: In the render settings of a particle uncheck Depth Test to create a particle that will render above everything in the scene
+* Rendering order: The order of effects is determined by the order in which they are loaded in the animation. If you want an effect that goes behind another effect but that starts later you can use a trigger: give the root of the effect a spawn trigger. In the animation create the effect that goes behind first and then start it by trigger using the send_effekseer_trigger command. You can have further control over rendering order by using the isForeground setting and using rendering_group settings for scene elements. Elements in higher rendering groups get rendered on top. Standard elements like unit sprites are in group 2 by default, setting isForeground places the effect in group 3. Using the set_rendering_group command you can put default elements in group 4, etc.
 
 ### Sequences
 
