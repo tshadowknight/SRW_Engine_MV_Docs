@@ -1917,6 +1917,7 @@ function\_id refers to the value of the function tag.<br>
 	Refreshes any units that may transform when another is missing or present on the map. Should be called if an event removed a unit that could trigger such a transformation.	
 
 * this.getFactionCount(faction\_id)
+
 	Returns how many units are currently active of the specified faction\_id.(player => blue, 0 => red, 1 => green, 2 => yellow)
 	
 * this.showTextCrawl(crawl\_id, is\_cancellable)	
