@@ -1922,7 +1922,7 @@ function\_id refers to the value of the function tag.<br>
 	
 * this.showTextCrawl(crawl\_id, is\_cancellable)	
 
-	Shows a text crawl of the text defined in APPSTRINGS.TEXT_CRAWLS, identified by crawl\_id. The event script execution is halted until the text crawl completes. If is\_cancellable is true the player can skip the text crawl with the B button.
+	Shows a text crawl of the text defined in APPSTRINGS.TEXT\_CRAWLS, identified by crawl\_id. The event script execution is halted until the text crawl completes. If is\_cancellable is true the player can skip the text crawl with the B button.
 	
 * this.setCustomWait()	
 
