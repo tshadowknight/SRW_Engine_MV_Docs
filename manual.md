@@ -2018,6 +2018,10 @@ function\_id refers to the value of the function tag.<br>
 			}			
 		});
 	```	
+	
+* this.didEnemyBattle()
+	
+	Can be used to check if any enemy performed an attack in the last battle. Only valid during the following before\_destruction and after\_action events.	
 
 # Plugin Config
 
