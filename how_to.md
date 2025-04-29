@@ -456,7 +456,19 @@ By setting the targetBox parameter in an addEnemy(FromObj) script command that e
 #### Collect unclaimed boxes at the end of a stage
 
 Use the collectItemsBoxes plugin command.
+
+#### Create a portal effect in a battle animation 
+ 
+To create a portal effect we want to do the following:  
+
+* Create a render target using the create\_render\_target command
+* Set that render target as the renderTargetId for a create\_bg command
+* Apply an opacity texture to the created background
+
+![](img/portal_effect.png)
 	
+Referring to the target texture target name(target\_0) will give control over its Camera, this can be used in translation and rotation commands	  
+	  
 ## Quirks  
   
   Check this section if something seems to be working oddly.
@@ -472,3 +484,11 @@ Use the collectItemsBoxes plugin command.
   Ex.: rotate\_to(0.2,0.2,0.00001)
   
   This also applies to rotate commands. 
+
+
+### Dynamic units appear stuck at coordinates 0,0,0
+
+This is usually caused by setting the same alias twice within the same animation or in one of the included animations from the main animation. This is avoided by not using the same alias twice within the same animation.
+
+
+
