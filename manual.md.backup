@@ -880,6 +880,9 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 	Assign the mech with the specified id to the pilot with the specified id.	
 	If as sub pilot is set the pilot will be marked as a sub-pilot. This is required when deploying new pilots with mechs that have deploy actions.
 
+* unbindMechPilots class\_id
+	Sets the classId of all pilots who have this current mech set as their classId to 0. Clear the mech's sub pilots. 
+
 * SetLevel actor\_id level
 
 * addKills actor\_id amount
@@ -2019,7 +2022,7 @@ function\_id refers to the value of the function tag.<br>
 		});
 	```	
 	
-* this.didEnemyBattle()
+* this.didEnemyAttack()
 	
 	Can be used to check if any enemy performed an attack in the last battle. Only valid during the following before\_destruction and after\_action events.	
 
@@ -2302,6 +2305,7 @@ $SRWConfig.battleSongs = {
 				3: "Battle2",
 				5: "Battle3"
 			}
+
 		},
 	},
 	enemySongMapping: {// maps an enemy id to a song. A song is defined by the name of a .ogg file in the audio/bgm folder

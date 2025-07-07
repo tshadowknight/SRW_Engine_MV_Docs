@@ -878,7 +878,10 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 	
 * assignUnit actor\_id class\_id as\_sub\_pilot
 	Assign the mech with the specified id to the pilot with the specified id.	
-	If as sub pilot is set the pilot will be marked as a sub-pilot. This is required when deploying new pilots with mechs that have deploy actions.
+	If as sub pilot is set the pilot will be marked as a sub-pilot. This is required when deploying new pilots with mechs that have deploy actions. Sets pilot fallback info.
+
+* unbindMechPilots class\_id
+	Sets the classId of all pilots who have this current mech set as their classId to 0. Clear the mech's sub pilots. Sets mech fallback info.
 
 * SetLevel actor\_id level
 
@@ -2302,6 +2305,7 @@ $SRWConfig.battleSongs = {
 				3: "Battle2",
 				5: "Battle3"
 			}
+
 		},
 	},
 	enemySongMapping: {// maps an enemy id to a song. A song is defined by the name of a .ogg file in the audio/bgm folder
