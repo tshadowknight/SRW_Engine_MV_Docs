@@ -370,6 +370,9 @@ If the target matches the tag a 1 will be substitured into the formula, otherwis
 Example:  `50 - distance + ([[pilot:10]] * 100)`
  
 This formula favors closer target with a strong bias towards targeting ally pilot 10
+
+### Battle Text Alias
+If set this pilot will take its battle lines from the specified pilot, but only if the pilot itself does not have a line for the requested context. Usually used for attack lines for pilots that share a mech.	
   
 
 # Attacks
