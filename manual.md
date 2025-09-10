@@ -337,6 +337,40 @@ Click the sprite in the General Info section to select a menu sprite. If the def
 * Change on frame: The frame of the animation on which the unit that is being spawned will become invisible<br>
 * Sound effect The sound effect that plays when spawning the unit<br>
 
+### Targeting Formula  
+The Targeting Formula field defines how the pilot scores its targets when used as an AI unit. It is a javascript expression that is evaluated by the engine. The enemy will use generally target the potential target with the **highest** score.
+
+The formula has access to the following variables to calculate with:  
+
+* hitrate: how likely a potential target is to be hit
+* damage: how much damage would be inflicted on the potential target
+* candestroy: 1 if a potential target can be destroyed, 0 otherwise
+* distance: the distance in tiles to the potential target
+
+A global setting is also available in the Engine.conf as ENEMY\_TARGETING\_FORMULA
+
+The default is: `Math.min(hitrate + 0.01, 1) * (damage + (canDestroy * 5000))`
+
+This formula incorporates hit rate, damage and weighs heavily towards chance to destroy
+
+A distance example: `50 - distance`
+
+A more advanced feature is the use of pilot and mech tags, this can be used to give enemies a perferred target without needing to set a hard preference through scripting commands.
+
+The format for this is 
+
+\[\[pilot:\<pilot_id\>\]\]
+
+or 
+
+\[\[mech:\<mech_id\>\]\]
+
+If the target matches the tag a 1 will be substitured into the formula, otherwise a 0
+
+Example:  `50 - distance + ([[pilot:10]] * 100)`
+ 
+This formula favors closer target with a strong bias towards targeting ally pilot 10
+  
 
 # Attacks
 
@@ -878,7 +912,7 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 	
 * assignUnit actor\_id class\_id as\_sub\_pilot unbind\_previous
 	Assign the mech with the specified id to the pilot with the specified id.	
-	If as sub pilot is set the pilot will be marked as a sub-pilot. This is required when deploying new pilots with mechs that have deploy actions. Sets pilot fallback info. If unbind\_previous is, unbindMechPilots is also applied to the provided class\_id.
+	If as sub pilot is set the pilot will be marked as a sub-pilot. This is required when deploying new pilots with mechs that have deploy actions. Sets pilot fallback info. If unbind\_previous is set to 1, unbindMechPilots is also applied to the provided class\_id.
 
 * unbindMechPilots class\_id
 	Sets the classId of all pilots who have this current mech set as their classId to 0. Clear the mech's sub pilots. Sets mech fallback info. Must be called before assigning a pilot to a unit with swappable pilots that can be assigned to other mechs.
@@ -1305,6 +1339,7 @@ If a sub\_id is specified the specified actor will be deployed as the sub twin f
 	Effectively replace the mech ability with base\_idx with the ability with upgraded\_idx
 
 * setMechUpgradeLevel mech\_id level force
+
 
 	Set the upgrade level for all stats of the specified mech/class to the specified level. By default the upgrade level will not be applied if the mech already has a better upgrade level for a stat but if force is 1 all previous upgrades will be overwritten. 
 	
