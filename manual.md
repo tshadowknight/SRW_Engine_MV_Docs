@@ -1425,8 +1425,7 @@ Also note that only one reticle can be shown at a time.
 	* terrain: if 1 the unit will prefer to move onto tiles that grant terrain bonuses
 	* formation: if 1 the unit will prefer to move adjacent to allies that provide support attack/defend
 	* reposition: if 1 the unit will move closer to hit enemies with stronger attacks even if they already can hit a target with a longer range attack
-	* preferTarget: if 1 the unit will prefer to move closer to its target unit or region. Target units take priority over target regions.	
-	
+	* preferTarget: if 2 the unit will prefer to move closer to its target unit or region even if they have other targets to attack. If 1 the unit will shoot its prefered target if in range but still attack other targets if not. Target units take priority over target regions.  
 * setTerrainMoveCosts air\_cost land\_cost water\_cost space\_cost
 
 	Set the cost in points of EN for moving on each terrain type. Once set the settings apply to all future stages until the command is used again. Defaults to all 0.
@@ -1443,6 +1442,7 @@ Also note that only one reticle can be shown at a time.
 
 	Set the vertical speed of the scrolling clouds layer. 1-2 usually recommended.
 	
+
 
 
 
