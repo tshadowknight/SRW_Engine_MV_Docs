@@ -1441,18 +1441,18 @@ Also note that only one reticle can be shown at a time.
 * setCloudScrollYSpeed speed
 
 	Set the vertical speed of the scrolling clouds layer. 1-2 usually recommended.
-	
-
-
-
 
 * setDefaultFocusEvent event\_id
 
 	Set the default event that will be focused if the actor for a focusActor command is not deployed. This setting is remembered until changed by this command.
+	
+	**Note**: Must be cleared by calling setDefaultFocusEvent 0 if not in use on a later map to avoid issues.
 
 * setDefaultFocusActor actor\_id
 
 	Set the default actor that will be focused if the actor for a focusActor command is not deployed. This take priority over any default event focus setting. This setting is remembered until changed by this command.
+	
+	**Note**: Must be cleared by calling setDefaultFocusActor 0 if not in use on a later map or if the actor is not deployed to avoid issues.
 	
 * lockCameraToCursor
 
@@ -1841,6 +1841,7 @@ Note that this command is only safe to be called in the stage intro script!
 * this.isEnemyInRegion(enemy\_id, region\_id)
 
 	Can be used as conditional to detect if the enemy with the specified enemy id is currently on a tile from the region with the specified id.<br>
+
 	If enemy_id is -1 this function will detect if any enemy is in the region.
 	
 * this.isEventInRegion(event\_id, region\_id)
