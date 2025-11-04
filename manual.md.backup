@@ -1540,6 +1540,7 @@ Also note that only one reticle can be shown at a time.
 	Overwrite the spirit in the specified slot of the specified actor with the one defined by the spirit\_id, cost and level(learned at).
 	These changes will not appear in the Pilot editor!
 	
+
 * clearCustomSpirit	actor\_id slot
 
 	Remove a custom spirit assignment.
@@ -1882,6 +1883,7 @@ Note that this command is only safe to be called in the stage intro script!
 	End the turn of the unit currently taking its turn.
 
 * this.isDeployed(actor\_id)
+
 	
 	Can be used as conditional to check if the actor with the specified id is currently deployed.
 	
@@ -1935,6 +1937,22 @@ Note that this command is only safe to be called in the stage intro script!
 * this.isEventInBattle(event\_id)
 
 	Can be used as a conditional to check if the event with the specified id is taking part in a battle. This function must be used instead of the game variable for proper results when using the twin system!	
+	
+* this.getLastMaxActorDamage
+	
+	Can be used to check the max damage inflicted by actors in the last battle. Valid in before\_destruction and after\_action.	
+	
+* this.getLastTotalActorDamage
+	
+	Can be used to check the total damage inflicted by all actors in the last battle. Valid in before\_destruction and after\_action.	
+	
+* this.getLastMaxEnemyDamage
+	
+	Can be used to check the max damage inflicted by enemies in the last battle. Valid in before\_destruction and after\_action.	
+	
+* this.getLastTotalEnemyDamage
+	
+	Can be used to check the total damage inflicted by all enemies in the last battle. Valid in before\_destruction and after\_action.			
 	
 * this.runSubEvent(function\_id)
 
