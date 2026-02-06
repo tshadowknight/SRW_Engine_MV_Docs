@@ -1101,6 +1101,11 @@ Page 4 and 5 of the Control Variables have been made reserved for specific funct
 
 	Deploys the specified actor to the specified event. If toAnimationQueue is set to 1 the this.processUnitAppearQueue() command will need to be called to show the unit.
 If a sub\_id is specified the specified actor will be deployed as the sub twin for the unit.
+
+* deployMech mech\_id event\_id toAnimationQueue sub\_id
+
+	Deploys the specified mech to the specified event. If toAnimationQueue is set to 1 the this.processUnitAppearQueue() command will need to be called to show the unit.
+If a sub\_id is specified the specified actor will be deployed as the sub twin for the unit.
  
 * deploySlot slot toAnimationQueue
 
@@ -1540,6 +1545,7 @@ Also note that only one reticle can be shown at a time.
 	Overwrite the spirit in the specified slot of the specified actor with the one defined by the spirit\_id, cost and level(learned at).
 	These changes will not appear in the Pilot editor!
 	
+
 
 * clearCustomSpirit	actor\_id slot
 
