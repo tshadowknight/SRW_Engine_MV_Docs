@@ -2382,7 +2382,21 @@ $SRWConfig.battleSongs = {
 	enemySongPriority: {//set the priority of an enemy's song over other songs, 0 if not listed
 
 		5: 2
-	}
+	},
+	notConfigurableActors: [5,7], //list actor ids of actors that should not be able to be assigned a custom bgm here(permanent subpilots)
+	assignmentGroups: [ //used to order pilots in the assign bgm menu, the name is inserted as a header before each group	
+		{
+			name: "Default RPG Maker Guys",
+			members: [1,2,3]
+		},
+	],
+	displayNames: {//provide nice display names by .ogg file name
+		"Battle1": "Harold's Bizarre Adventure",		
+	},
+	jukeboxOrder: [//order of display in the assign menu and jukebox, by .ogg file name
+		"Battle1",
+		"Battle2"
+	]
 };
 ```
 
