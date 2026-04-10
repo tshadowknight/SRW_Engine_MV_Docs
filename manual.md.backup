@@ -2400,6 +2400,24 @@ $SRWConfig.battleSongs = {
 };
 ```
 
+
+### Using Custom BGM
+Reference for the dev and instructions for users:
+
+**The game must be closed when modifying custom BGM**
+
+**All files used must be in .ogg format**
+
+
+1) Create the bgm_custom folder if it does not exist yet, it is created automatically when launching the game. You can also manually create it. It goes in the same folder as the 'save' folder
+
+2) Place custom .ogg files in the bgm_custom folder
+
+3) Launch the game, custom BGM are now available in the Jukebox and BGM assign menu in the Options menu
+
+*Note*: The .ogg files support the LOOPSTART and LOOPLENGTH metadata tags used to loop songs in RPG Maker, so you can make your custom BGM loop correctly. A tutorial is available here: https://forums.rpgmakerweb.com/threads/make-looping-bgm-part-1-ogg-vorbis.10987/
+
+
 ## StageInfo.conf.js
 
 Determines how a map will be displayed on the previous map section of the intermission.
