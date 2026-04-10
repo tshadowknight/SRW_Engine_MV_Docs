@@ -1562,6 +1562,19 @@ Also note that only one reticle can be shown at a time.
 	Collect all item boxes currently on the map. Must be called to pick up boxes at the end of a stage.
 	If the optional event id is provided only the box with the matching id will be collected.	
 	
+* unlockBGM ogg\_name
+Unlocks the .ogg file in audo/bgm for assignment in the BGM menu. Provide the name of the file without the .ogg extension.
+
+* lockBGM ogg\_name
+Locks the .ogg file in audo/bgm for assignment in the BGM menu. Provide the name of the file without the .ogg extension.
+
+* unlockJukeboxSong  ogg\_name
+Unlocks the .ogg file in audo/bgm for assignment in the Jukebox. Provide the name of the file without the .ogg extension.
+
+* lockJukeboxSong  ogg\_name
+Locks the .ogg file in audo/bgm for assignment in the Jukebox. Provide the name of the file without the .ogg extension.
+	
+	
 	
 ## External Plugin commands	
 
