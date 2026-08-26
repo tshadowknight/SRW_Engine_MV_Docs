@@ -1645,6 +1645,7 @@ They can also be used as conditionals in IF statements.
 
 	Shows a text box using the values set with the previous commands.
 	
+
 * this.isActorDestructionQueued(actor\_id)
 
 	To be used as a conditional in the before_destruction event.<br>
@@ -1932,13 +1933,13 @@ Note that this command is only safe to be called in the stage intro script!
 
 	Show text declaring the start of an enemy phase. Automatically shows the correct faction color and displays "Ally Phase" instead if a faction is configured to be friendly to the player.	
 
-* this.applyEventSpirits(event\_id, spirit\_ids)
+* this.applyEventSpirits(event\_id, spirit\_ids, is\_for\_subTwin)
 
-	Apply spirits effects to the unit with the specified event id. Ids are provided as an array, ex.: \[1,4,5\]. The animation for the spirits will play automatically.
+	Apply spirits effects to the unit with the specified event id. Ids are provided as an array, ex.: \[1,4,5\]. The animation for the spirits will play automatically. If is\_for\_subTwin is 1 the effect will be applied the subtwin of the event if available.
 
 * this.applyActorSpirits(actor\_id, spirit\_ids)
 
-	Apply spirits effects to the actor unit with the specified id. Ids are provided as an array, ex.: \[1,4,5\]. The animation for the spirits will play automatically.
+	Apply spirits effects to the actor unit with the specified id. Ids are provided as an array, ex.: \[1,4,5\]. The animation for the spirits will play automatically. Automatically applies the spirits to the subtwin based on the state of the provided actor.
 
 * this.isActorHitBy(actor\_id, weapon\_id, include\_support)
 
