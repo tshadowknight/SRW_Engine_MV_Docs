@@ -1519,6 +1519,14 @@ Also note that only one reticle can be shown at a time.
 
 	Clears the specified slot(starts at 0) for the specified mech. The specified actor has tis isSubPilot status cleared.
 	
+* addEnemySubPilot mech\_id  slot enemy\_id
+
+	Sets the specified enemy as a subpilot for the specified mech in the specified slot(starts at 0).
+
+* clearEnemySubPilots mech\_id
+
+	Remove all enemy sub pilots assigned to a mech.
+	
 * setPortraitOverlay id
 
 	Add an overlay for the portrait in the textbox. The overlay should be 2x8 spritesheet in the img/system folder with the name PortraitOverlay_[id].png. Frames are of face width and face height in dimensions.   
@@ -1645,6 +1653,7 @@ They can also be used as conditionals in IF statements.
 
 	Shows a text box using the values set with the previous commands.
 	
+
 
 * this.isActorDestructionQueued(actor\_id)
 
@@ -2002,6 +2011,7 @@ function\_id refers to the value of the function tag.<br>
 	Returns the SRPG distance between the two specified events.
 	
 * this.reloadRelativeUnits()
+
 
 	Refreshes any units that may transform when another is missing or present on the map. Should be called if an event removed a unit that could trigger such a transformation.	
 
