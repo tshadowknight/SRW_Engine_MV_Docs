@@ -1553,8 +1553,6 @@ Also note that only one reticle can be shown at a time.
 	Overwrite the spirit in the specified slot of the specified actor with the one defined by the spirit\_id, cost and level(learned at).
 	These changes will not appear in the Pilot editor!
 	
-
-
 * clearCustomSpirit	actor\_id slot
 
 	Remove a custom spirit assignment.
@@ -1591,7 +1589,9 @@ Unlocks the .ogg file in audo/bgm for assignment in the Jukebox. Provide the nam
 * lockJukeboxSong  ogg\_name
 Locks the .ogg file in audo/bgm for assignment in the Jukebox. Provide the name of the file without the .ogg extension.
 	
-	
+* setNotAParticipant event\_id state
+
+Sets the specified event's notAPartcipant flag. state 1 for is not a participant, state 0 for is a participant. When enabled the unit will not be selectable to take actions and enemies will not target them. Automatically cleared at the end of stage. Only applies to Actor units.	
 	
 ## External Plugin commands	
 
@@ -1790,6 +1790,7 @@ A setting can be left blank by entering "" as its value.
 	Spawn an enemy on the map, the parameters are passed in as js object with the keys being the same as the parameters of the this.addEnemy command.
 
 	Example:
+
 
 ```javascript 
 	this.addEnemyFromObj({
